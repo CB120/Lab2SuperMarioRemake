@@ -170,7 +170,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: aa9fa89091fee0f4591dfe4e7b177603, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -189,7 +189,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWalkSpeed: 6.25
   maxRunSpeed: 10.25
-  gravityStrength: 1.5
+  gravityStrength: 90
+  jumpImpulse: 16
+  jumpImpulseRunning: 20
+--- !u!114 &456508703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456508698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc6d0be44a4edd4da6eaf037102944b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 4, y: 4}
+  distance: 0.25
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &474036470
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +579,7 @@ GameObject:
   - component: {fileID: 1007865544}
   - component: {fileID: 1007865543}
   - component: {fileID: 1007865545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
