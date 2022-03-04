@@ -11,11 +11,19 @@ public class MarioMovementController : MonoBehaviour
     GroundedTest groundedTest;
 
     // Properties
-    [SerializeField] float maxWalkSpeed; // 1 and 9/16 pixels/s in the original game
-    [SerializeField] float maxRunSpeed;  // 2 and 9/16 p/s in the original game
-    [SerializeField] float gravityStrength; // Would usually use Unity's inbuilt gravity but given the simplicity that doesn't seem worthwhile. 6/16ths of a pixel in smb
-    [SerializeField] float jumpImpulse; // 4 pixels in the original game
-    [SerializeField] float jumpImpulseRunning; // 5 pixels in the original game, though the actual behaviour is slightly tweaked for this project
+    // All are in units per second or units per second squared for acceleration
+    // 1 and 9/16 pixels/s in the original game
+    [SerializeField] float maxWalkSpeed; 
+    // 2 and 9/16 p/s in the original game
+    [SerializeField] float maxRunSpeed;  
+    // Would usually use Unity's inbuilt gravity but given the simplicity that doesn't seem worthwhile. 6/16ths of a pixel in smb
+    [SerializeField] float gravityStrength; 
+    // 4 pixels in the original game
+    [SerializeField] float jumpImpulse; 
+    // 5 pixels in the original game, though the actual behaviour is slightly tweaked for this project
+    [SerializeField] float jumpImpulseRunning; 
+    // The acceleration due to gravity when keeping the jump button held down. Around 2/16ths of a pixel in the original   
+    [SerializeField] float jumpHoldGravityStrength; 
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -36,26 +44,33 @@ public class MarioMovementController : MonoBehaviour
         // Set X velocity
         velocity.x = speed * input.x;
         
-        // debug
-        if (Input.GetButtonDown("Jump")) Debug.Log(IsGrounded() ? "Grounded" : "Not grounded");
-        
         // Jumping/Falling
         if (IsGrounded()) {
+            velocity.y = -gravityStrength * (1/Time.fixedDeltaTime);
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
         } else {
             // Apply acceleration due to gravity
             // TODO: terminal velocity
-            velocity.y -= gravityStrength * Time.deltaTime;  
+            float g = gravityStrength;
+            if (Input.GetButton("Jump")) {
+                g = jumpHoldGravityStrength;
+            }
+
+            // this looks dumb but trust me
+            velocity.y -= g * Time.deltaTime * (1 / Time.fixedDeltaTime);
+
         }
+
         
         // Apply velocity to rigidbody
         rb.velocity = velocity;
     }
 
     private void Jump () {
-        velocity.y = jumpImpulse;
+        // Not super authentic, while running does increase your jump height, it's not just going off the run button being held down, but this approximates it well enough.  
+        velocity.y = Input.GetButton("Jump") ? jumpImpulseRunning : jumpImpulse;
     }
 
     private bool IsGrounded () {
