@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1305979917316626024}
   - component: {fileID: 6528041436395352459}
   - component: {fileID: 4071468615276789384}
-  - component: {fileID: 7948440573567012058}
   - component: {fileID: 6528041436395352454}
   m_Layer: 7
   m_Name: AnimatedBlock
@@ -135,22 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7948440573567012058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305979917316626030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab80e76146e214356a8b3cb3bb00ddfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickup: {fileID: 5570315022270757439, guid: ea58a3da041714e1891b04986e9e1b01, type: 3}
-  spawnItemTime: 0.2
-  destroyItemTime: 0.2
-  blockType: 0
 --- !u!95 &6528041436395352454
 Animator:
   serializedVersion: 4
@@ -180,6 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226294092847993860}
+  - component: {fileID: 1918614750}
   m_Layer: 0
   m_Name: QuestionBlock
   m_TagString: Untagged
@@ -203,3 +187,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918614750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226294092847993857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab80e76146e214356a8b3cb3bb00ddfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickup: {fileID: 2288269421513207595, guid: ea58a3da041714e1891b04986e9e1b01, type: 3}
+  spawnItemTime: 0.2
+  destroyItemTime: 0.2
+  loopCount: 5
+  blockType: 0

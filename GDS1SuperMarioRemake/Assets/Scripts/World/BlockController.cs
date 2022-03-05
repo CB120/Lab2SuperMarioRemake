@@ -7,6 +7,7 @@ public class BlockController : MonoBehaviour
     [SerializeField] private GameObject pickup;
     public float spawnItemTime = 0.2f;
     public float destroyItemTime = 0.2f;
+    public int loopCount = 5;
     public enum Blocks {
         QUESTIONBOX,
         BREAKABLEBOX,
@@ -40,14 +41,15 @@ public class BlockController : MonoBehaviour
                 blockType = Blocks.EMPTY;
                 break;
             case Blocks.BREAKABLEBOX:
-
+                Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
+                Destroy(gameObject);
                 break;
             case Blocks.COINBRICK:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
                 SpawnAndDeleteItem();
                 break;
             case Blocks.LOOPCOINBRICK:
-
+                LoopBrick();
                 break;
             case Blocks.EMPTY:
 
@@ -57,6 +59,24 @@ public class BlockController : MonoBehaviour
         
     }
 
+    void LoopBrick()
+    {
+        GetComponentInChildren<Animator>().ResetTrigger("isLooping");
+        if (loopCount != 0)
+        {
+            loopCount--;
+            GetComponentInChildren<Animator>().SetTrigger("isLooping");
+            SpawnAndDeleteItem();
+        }
+        else
+        {
+            SpawnAndDeleteItem();
+            GetComponentInChildren<Animator>().ResetTrigger("isLooping");
+            GetComponentInChildren<Animator>().SetTrigger("isOpen");
+            blockType = Blocks.EMPTY;
+        }
+    }
+
     private void SpawnItem()
     {
         Instantiate(pickup, gameObject.transform.position, Quaternion.identity, gameObject.transform);
@@ -64,8 +84,7 @@ public class BlockController : MonoBehaviour
 
     private void SpawnAndDeleteItem()
     {
-        pickup = Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
-        pickup.transform.parent = gameObject.transform;
-        Destroy(pickup, destroyItemTime);
+        GameObject newPickup = Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
+        newPickup.transform.parent = gameObject.transform;
     }
 }
