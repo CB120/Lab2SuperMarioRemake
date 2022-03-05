@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
+    private GameObject gameController;
+    private ScoreController scoreController;
     [SerializeField] private GameObject pickup;
     public float spawnItemTime = 0.2f;
     public float destroyItemTime = 0.2f;
@@ -17,7 +19,13 @@ public class BlockController : MonoBehaviour
     };
     public Blocks blockType;
 
-    public void ActivateBlock(ScoreController score)
+    private void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        scoreController = gameController.GetComponent<ScoreController>();
+    }
+
+    public void ActivateBlock()
     {
         switch (blockType)
         {
@@ -32,6 +40,8 @@ public class BlockController : MonoBehaviour
                 break;
             case Blocks.COINBRICK:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
+                scoreController.IncreaseScore(200);
+                scoreController.IncreaseCoin();
                 SpawnAndDeleteItem();
                 blockType = Blocks.EMPTY;
                 break;
@@ -51,12 +61,15 @@ public class BlockController : MonoBehaviour
         GetComponentInChildren<Animator>().ResetTrigger("isLooping");
         if (loopCount != 0)
         {
+            scoreController.IncreaseScore(200);
+            scoreController.IncreaseCoin();
             loopCount--;
             GetComponentInChildren<Animator>().SetTrigger("isLooping");
             SpawnAndDeleteItem();
         }
         else
         {
+            scoreController.IncreaseScore(200);
             SpawnAndDeleteItem();
             GetComponentInChildren<Animator>().ResetTrigger("isLooping");
             GetComponentInChildren<Animator>().SetTrigger("isOpen");
@@ -77,11 +90,7 @@ public class BlockController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ScoreController newScore = collision.gameObject.GetComponent<ScoreController>();
-        if (newScore)
-        {
-            ActivateBlock(newScore);
-        }
+        ActivateBlock();
     }
 
 }
