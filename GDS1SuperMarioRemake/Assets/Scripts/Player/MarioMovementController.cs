@@ -88,5 +88,11 @@ public class MarioMovementController : MonoBehaviour
         return groundedTest.IsGrounded();
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (groundedTest.IsHittingCeiling()) {
+            velocity.y = 0;
+        }
+    }
+
 
 }

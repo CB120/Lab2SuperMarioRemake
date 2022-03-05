@@ -188,7 +188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &456508702
 MonoBehaviour:
@@ -205,12 +205,12 @@ MonoBehaviour:
   maxWalkSpeed: 6.25
   maxRunSpeed: 10.25
   gravityStrength: 22.5
-  groundStickingVelocity: 0.0625
+  groundStickingVelocity: 0
   terminalVelocity: 15
   jumpImpulse: 16
   jumpImpulseRunning: 5
   jumpHoldGravityStrength: 2.85
-  airControl: 0.1171875
+  airControl: 0.234375
 --- !u!114 &456508703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,11 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc6d0be44a4edd4da6eaf037102944b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 0.9, y: 1}
+  size: {x: 0.7, y: 1}
   distance: 0.0625
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
 --- !u!61 &1036568373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &4447907550775002921
 MonoBehaviour:

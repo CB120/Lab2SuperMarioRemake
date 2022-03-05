@@ -8071,6 +8071,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 456508699, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: airControl
+      value: 0.234375
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: groundStickingVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 129
+      objectReference: {fileID: 0}
     - target: {fileID: 1036568373, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Size.x
       value: 0.5
