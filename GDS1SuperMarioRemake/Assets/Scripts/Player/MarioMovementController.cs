@@ -17,7 +17,11 @@ public class MarioMovementController : MonoBehaviour
     // 2 and 9/16 p/s in the original game
     [SerializeField] float maxRunSpeed;  
     // Would usually use Unity's inbuilt gravity but given the simplicity that doesn't seem worthwhile. 6/16ths of a pixel in smb
-    [SerializeField] float gravityStrength; 
+    [SerializeField] float gravityStrength;
+    // Downward velocity applied when grounded
+    [SerializeField] float groundStickingVelocity;
+    // Maximum fall velocity, 4/16ths in smb
+    [SerializeField] float terminalVelocity;
     // 4 pixels in the original game
     [SerializeField] float jumpImpulse; 
     // 5 pixels in the original game, though the actual behaviour is slightly tweaked for this project
@@ -46,20 +50,18 @@ public class MarioMovementController : MonoBehaviour
         
         // Jumping/Falling
         if (IsGrounded()) {
-            velocity.y = -gravityStrength * (1/Time.fixedDeltaTime);
+            velocity.y = -groundStickingVelocity;
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
         } else {
             // Apply acceleration due to gravity
-            // TODO: terminal velocity
             float g = gravityStrength;
             if (Input.GetButton("Jump")) {
                 g = jumpHoldGravityStrength;
             }
 
-            // this looks dumb but trust me
-            velocity.y -= g * Time.deltaTime * (1 / Time.fixedDeltaTime);
+            velocity.y = Mathf.Clamp(velocity.y - g * Time.deltaTime, -terminalVelocity, terminalVelocity);
 
         }
 
