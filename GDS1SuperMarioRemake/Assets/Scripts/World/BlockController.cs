@@ -14,7 +14,6 @@ public class BlockController : MonoBehaviour
         COINBRICK,
         LOOPCOINBRICK,
         EMPTY,
-
     };
     public Blocks blockType;
 
