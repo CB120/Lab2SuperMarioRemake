@@ -18,7 +18,7 @@ public class BlockController : MonoBehaviour
     };
     public Blocks blockType;
 
-    public void ActivateBlock()
+    public void ActivateBlock(ScoreController score)
     {
         switch (blockType)
         {
@@ -78,7 +78,11 @@ public class BlockController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ActivateBlock();
+        ScoreController newScore = collision.gameObject.GetComponent<ScoreController>();
+        if (newScore)
+        {
+            ActivateBlock(newScore);
+        }
     }
 
 }

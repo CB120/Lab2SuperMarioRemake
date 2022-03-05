@@ -25,10 +25,10 @@ public class Interactables : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(startingPos, Vector2.up, maxDistance);
             Debug.DrawRay(startingPos, Vector2.up, Color.red, 3f);
 
-        if (hit.collider)
-        {
-            hit.collider.GetComponentInParent<BlockController>().ActivateBlock();
-        }
+        //if (hit.collider)
+        //{
+        //    hit.collider.GetComponentInParent<BlockController>().ActivateBlock();
+        //}
             
        // }
     }
