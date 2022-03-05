@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,6 +90,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1546,7 +1558,6 @@ TextureImporter:
       MarioSpriteSheet_21: 510634455
       MarioSpriteSheet_31: -1426490846
       MarioSpriteSheet_8: -1383866681
-      MarioSpriteSheet_67: 972514554
       MarioSpriteSheet_15: 1172151576
       MarioSpriteSheet_19: 1132772366
       MarioSpriteSheet_51: -1018496821
@@ -1604,10 +1615,11 @@ TextureImporter:
       MarioSpriteSheet_48: -459046807
       MarioSpriteSheet_12: -1602267769
       MarioSpriteSheet_18: -1497407287
+      MarioSpriteSheet_67: 972514554
       MarioSpriteSheet_52: -1170553867
       MarioSpriteSheet_45: -1589455677
-      MarioSpriteSheet_54: 2084663583
       MarioSpriteSheet_33: 1143289345
+      MarioSpriteSheet_54: 2084663583
       MarioSpriteSheet_29: 636824286
       MarioSpriteSheet_57: 1301340866
   spritePackingTag: 

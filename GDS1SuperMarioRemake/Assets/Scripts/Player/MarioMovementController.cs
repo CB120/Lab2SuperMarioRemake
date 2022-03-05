@@ -17,13 +17,19 @@ public class MarioMovementController : MonoBehaviour
     // 2 and 9/16 p/s in the original game
     [SerializeField] float maxRunSpeed;  
     // Would usually use Unity's inbuilt gravity but given the simplicity that doesn't seem worthwhile. 6/16ths of a pixel in smb
-    [SerializeField] float gravityStrength; 
+    [SerializeField] float gravityStrength;
+    // Downward velocity applied when grounded
+    [SerializeField] float groundStickingVelocity;
+    // Maximum fall velocity, 4/16ths in smb
+    [SerializeField] float terminalVelocity;
     // 4 pixels in the original game
     [SerializeField] float jumpImpulse; 
     // 5 pixels in the original game, though the actual behaviour is slightly tweaked for this project
     [SerializeField] float jumpImpulseRunning; 
     // The acceleration due to gravity when keeping the jump button held down. Around 2/16ths of a pixel in the original   
     [SerializeField] float jumpHoldGravityStrength; 
+    
+    [SerializeField] float airControl;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -39,29 +45,34 @@ public class MarioMovementController : MonoBehaviour
         // Take raw input axes
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         
-        // Set the speed based on if run is held
-        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
-        // Set X velocity
-        velocity.x = speed * input.x;
-        
+        bool grounded = IsGrounded();
+
         // Jumping/Falling
-        if (IsGrounded()) {
-            velocity.y = -gravityStrength * (1/Time.fixedDeltaTime);
+        if (grounded) {
+            velocity.x = 0; // Velocity should be directly based on input when grounded.
+            velocity.y = -groundStickingVelocity;
             if (Input.GetButtonDown("Jump")) {
                 Jump();
             }
         } else {
             // Apply acceleration due to gravity
-            // TODO: terminal velocity
             float g = gravityStrength;
-            if (Input.GetButton("Jump")) {
+            // If still rising, allow jump to boost height
+            if (Input.GetButton("Jump") && velocity.y > 0) {
                 g = jumpHoldGravityStrength;
             }
 
-            // this looks dumb but trust me
-            velocity.y -= g * Time.deltaTime * (1 / Time.fixedDeltaTime);
-
+            velocity.y = Mathf.Clamp(velocity.y - g * Time.deltaTime, -terminalVelocity, terminalVelocity);
         }
+
+        // Horizontal movement
+
+        // Set the speed based on if run is held
+        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
+        if (!grounded) speed = airControl;
+        // Apply X velocity. Note addition to allow air acceleration/deceleration. velocity.x is reset to zero when grounded above
+        velocity.x += speed * input.x;
+        
 
         
         // Apply velocity to rigidbody
