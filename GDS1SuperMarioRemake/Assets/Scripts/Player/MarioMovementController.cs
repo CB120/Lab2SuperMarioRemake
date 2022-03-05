@@ -28,6 +28,8 @@ public class MarioMovementController : MonoBehaviour
     [SerializeField] float jumpImpulseRunning; 
     // The acceleration due to gravity when keeping the jump button held down. Around 2/16ths of a pixel in the original   
     [SerializeField] float jumpHoldGravityStrength; 
+    
+    [SerializeField] float airControl;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -43,13 +45,11 @@ public class MarioMovementController : MonoBehaviour
         // Take raw input axes
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         
-        // Set the speed based on if run is held
-        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
-        // Set X velocity
-        velocity.x = speed * input.x;
-        
+        bool grounded = IsGrounded();
+
         // Jumping/Falling
-        if (IsGrounded()) {
+        if (grounded) {
+            velocity.x = 0; // Velocity should be directly based on input when grounded.
             velocity.y = -groundStickingVelocity;
             if (Input.GetButtonDown("Jump")) {
                 Jump();
@@ -57,13 +57,22 @@ public class MarioMovementController : MonoBehaviour
         } else {
             // Apply acceleration due to gravity
             float g = gravityStrength;
-            if (Input.GetButton("Jump")) {
+            // If still rising, allow jump to boost height
+            if (Input.GetButton("Jump") && velocity.y > 0) {
                 g = jumpHoldGravityStrength;
             }
 
             velocity.y = Mathf.Clamp(velocity.y - g * Time.deltaTime, -terminalVelocity, terminalVelocity);
-
         }
+
+        // Horizontal movement
+
+        // Set the speed based on if run is held
+        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
+        if (!grounded) speed = airControl;
+        // Apply X velocity. Note addition to allow air acceleration/deceleration. velocity.x is reset to zero when grounded above
+        velocity.x += speed * input.x;
+        
 
         
         // Apply velocity to rigidbody

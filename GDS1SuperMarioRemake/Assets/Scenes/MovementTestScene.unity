@@ -189,10 +189,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWalkSpeed: 6.25
   maxRunSpeed: 10.25
-  gravityStrength: 1.5
-  jumpImpulse: 16
+  gravityStrength: 90
+  groundStickingVelocity: 0.0625
+  terminalVelocity: 60
+  jumpImpulse: 64
   jumpImpulseRunning: 20
-  jumpHoldGravityStrength: 0.19
+  jumpHoldGravityStrength: 11.4
+  airControl: 0.234375
 --- !u!114 &456508703
 MonoBehaviour:
   m_ObjectHideFlags: 0
