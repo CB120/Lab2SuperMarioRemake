@@ -27,7 +27,7 @@ public class Interactables : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector2 startingPos = new Vector2(gameObject.transform.position.x, transform.position.y + originOffset);
-            RaycastHit2D hit = Physics2D.Raycast(startingPos, Vector2.up, maxDistance);
+            RaycastHit2D hit = Physics2D.Raycast(startingPos, Vector2.up, maxDistance, 7);
 
             if (hit.collider)
             {
