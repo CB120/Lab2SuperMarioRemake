@@ -27,8 +27,11 @@ public class GameController : MonoBehaviour
     ==================*/
     private void DecrementTime()
     {
-        timerText.text = "Time" + "\n" + timeLeft.ToString();
-        timeLeft--;
+        if (timeLeft > 0)
+        {
+            timerText.text = "Time" + "\n" + timeLeft.ToString();
+            timeLeft--;
+        }
     }
 
 

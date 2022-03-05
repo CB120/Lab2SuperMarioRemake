@@ -6,18 +6,34 @@ public class PowerupSpawn : MonoBehaviour
 {
     public float yIncrease = 1;
     public float timeToSpawn = 1.0f;
+    private bool bIsSpawning = true;
+    private float endPosition = 0;
     // Start is called before the first frame update
     void Start()
     {
 
-        yIncrease = gameObject.transform.position.y + 1;
-        
+        endPosition = gameObject.transform.position.y + yIncrease;
+        Invoke("FinishedSpawning", timeToSpawn + 0.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 pos = gameObject.transform.position;
-        gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, new Vector2(pos.x, yIncrease), 0.5f);
+        if (bIsSpawning)
+        {
+            Vector2 pos = gameObject.transform.position;
+            gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, new Vector2(pos.x, endPosition), timeToSpawn);
+        }
+    }
+
+    void FinishedSpawning()
+    {
+        bIsSpawning = false;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb)
+        {
+            rb.gravityScale = 1;
+        }
+        
     }
 }
