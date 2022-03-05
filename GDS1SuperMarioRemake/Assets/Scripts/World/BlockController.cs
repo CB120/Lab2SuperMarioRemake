@@ -16,20 +16,7 @@ public class BlockController : MonoBehaviour
         EMPTY,
 
     };
-
     public Blocks blockType;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ActivateBlock()
     {
@@ -47,6 +34,7 @@ public class BlockController : MonoBehaviour
             case Blocks.COINBRICK:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
                 SpawnAndDeleteItem();
+                blockType = Blocks.EMPTY;
                 break;
             case Blocks.LOOPCOINBRICK:
                 LoopBrick();
@@ -87,4 +75,10 @@ public class BlockController : MonoBehaviour
         GameObject newPickup = Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
         newPickup.transform.parent = gameObject.transform;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ActivateBlock();
+    }
+
 }
