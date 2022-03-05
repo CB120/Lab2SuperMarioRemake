@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 472597049308828603}
   - component: {fileID: -5163442700292048385}
   - component: {fileID: -5695784935609199356}
+  - component: {fileID: 5302263750021127297}
   m_Layer: 0
   m_Name: 1Up
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yIncrease: 1
   timeToSpawn: 2
+  powerupType: 0
 --- !u!50 &-5163442700292048385
 Rigidbody2D:
   serializedVersion: 4
@@ -148,3 +150,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5302263750021127297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449099638254369375}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978aa432c13ca49a3bb08b09e954b1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

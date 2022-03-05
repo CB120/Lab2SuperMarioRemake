@@ -6,14 +6,23 @@ public class PowerupSpawn : MonoBehaviour
 {
     public float yIncrease = 1;
     public float timeToSpawn = 1.0f;
+    public float timeToActivateMovement = 1.0f;
     private bool bIsSpawning = true;
     private float endPosition = 0;
+    public enum Powerup
+    {
+        mushroom,
+        fireFlower,
+        starMan,
+    }
+    public Powerup powerupType;
+
     // Start is called before the first frame update
     void Start()
     {
 
         endPosition = gameObject.transform.position.y + yIncrease;
-        Invoke("FinishedSpawning", timeToSpawn + 0.2f);
+        Invoke("FinishedSpawning", timeToActivateMovement);
     }
 
     // Update is called once per frame
@@ -22,7 +31,7 @@ public class PowerupSpawn : MonoBehaviour
         if (bIsSpawning)
         {
             Vector2 pos = gameObject.transform.position;
-            gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, new Vector2(pos.x, endPosition), timeToSpawn);
+            gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, new Vector2(pos.x, endPosition), timeToSpawn * Time.deltaTime);
         }
     }
 
@@ -34,6 +43,22 @@ public class PowerupSpawn : MonoBehaviour
         {
             rb.gravityScale = 1;
         }
-        
+
+
+        switch (powerupType)
+        {
+            case Powerup.mushroom:
+                GetComponent<MushroomMovement>().enabled = true;
+                break;
+            case Powerup.fireFlower:
+
+                break;
+            case Powerup.starMan:
+                GetComponent<StarmanMovement>().enabled = true;
+                break;
+            default:
+
+                break;
+        }
     }
 }

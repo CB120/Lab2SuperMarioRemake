@@ -120,3 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yIncrease: 1
   timeToSpawn: 2
+  timeToActivateMovement: 1
+  powerupType: 1

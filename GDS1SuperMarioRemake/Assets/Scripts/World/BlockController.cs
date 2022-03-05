@@ -90,7 +90,10 @@ public class BlockController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ActivateBlock();
+        if (collision.gameObject.tag == "Player")
+        {
+            ActivateBlock();
+        }
     }
 
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 195682944906161878}
   - component: {fileID: 264867335062246496}
   - component: {fileID: 2972568144803045846}
+  - component: {fileID: -4277841528977132175}
   m_Layer: 0
   m_Name: StarMan
   m_TagString: Untagged
@@ -122,6 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yIncrease: 1
   timeToSpawn: 2
+  timeToActivateMovement: 1
+  powerupType: 2
 --- !u!50 &264867335062246496
 Rigidbody2D:
   serializedVersion: 4
@@ -169,3 +172,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4277841528977132175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4145093507481126706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b200961212145e6b54352f3d26e718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

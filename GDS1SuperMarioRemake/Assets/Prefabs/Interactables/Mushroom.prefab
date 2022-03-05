@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 1145057540365833872}
   - component: {fileID: 472597049308828597}
   - component: {fileID: 472597049308828603}
+  - component: {fileID: -5321974488160160335}
   - component: {fileID: -5163442700292048385}
   - component: {fileID: -5695784935609199356}
+  - component: {fileID: -8688194429216029591}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -101,6 +103,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yIncrease: 1
   timeToSpawn: 2
+  timeToActivateMovement: 1
+  powerupType: 0
+--- !u!114 &-5321974488160160335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449099638254369375}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978aa432c13ca49a3bb08b09e954b1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originOffset: 0.75
+  maxDistance: 0.25
+  speed: 2
+  trigger: {fileID: -8688194429216029591}
 --- !u!50 &-5163442700292048385
 Rigidbody2D:
   serializedVersion: 4
@@ -147,4 +167,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &-8688194429216029591
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449099638254369375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
