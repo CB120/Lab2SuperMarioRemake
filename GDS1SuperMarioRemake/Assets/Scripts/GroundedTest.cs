@@ -23,4 +23,9 @@ public class GroundedTest : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(col.bounds.center, size, 0, Vector2.down, distance, layerMask);
         return hit.collider != null;
     }
+
+    public bool IsHittingCeiling () {
+        RaycastHit2D hit = Physics2D.BoxCast(col.bounds.center, size, 0, Vector2.up, distance, layerMask);
+        return hit.collider != null;
+    }
 }
