@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     public GameObject player;
     public bool FollowPlayer = true;
+    public float CameraYAxis;
     void Start()
     {
         
@@ -17,7 +18,7 @@ public class CameraScript : MonoBehaviour
     {
         if (player.transform.position.x > transform.position.x && FollowPlayer)
         {
-            transform.position = new Vector3(player.transform.position.x, 20f, -46f);
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
         }
     }
 }
