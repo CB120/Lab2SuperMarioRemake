@@ -32,20 +32,31 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pipe")
+        if (collision.gameObject.tag == "Pipe" || collision.gameObject.tag == "Enemy")
         {
             wallCollision ^= true; // Switch between true & false on collision (fuck me dead i just learnt about xor-equals)
         }
 
-        if(collision.gameObject == Mario) // && Star != active)
+        if (collision.gameObject == Mario) // && Star != active)
         {
             // If mario is small, put death code
             // If mario is big, downgrade him to small
             // If mario has the flower. downgrade him to big
-           
+
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject == Mario)
+        {
+            Debug.Log("lets goooo");
+            Destroy(this);
+        }
+    }
+
+
+
 }
