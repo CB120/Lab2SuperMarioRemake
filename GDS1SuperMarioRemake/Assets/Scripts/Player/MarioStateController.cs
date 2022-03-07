@@ -10,7 +10,9 @@ public class MarioStateController : MonoBehaviour
         large,
         fire,
         invincible,
-        dead
+        dead,
+        inPipe,
+        onFlag,
 
     }
 
@@ -70,5 +72,15 @@ public class MarioStateController : MonoBehaviour
 
     }
 
- 
+    private void PipeCinematic()
+    {
+        marioState = MarioState.inPipe;
+    }
+
+    private void FlagCinematic()
+    {
+        marioState = MarioState.onFlag;
+    }
+
+
 }
