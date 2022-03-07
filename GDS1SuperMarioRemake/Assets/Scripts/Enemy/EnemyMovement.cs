@@ -8,17 +8,8 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed;
     private bool wallCollision = false;
     public GameObject Mario;
-    //Camera cam = Camera.main;
-
-
     
 
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //Vector3 screenPoint = cam.WorldToScreenPoint(Mario.transform.position);
@@ -32,7 +23,6 @@ public class EnemyMovement : MonoBehaviour
                     transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
                 }
 
-       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
