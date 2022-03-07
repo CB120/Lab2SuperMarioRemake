@@ -31,7 +31,7 @@ public class MarioMovementController : MonoBehaviour
     
     [SerializeField] float airControl;
 
-
+    bool jumpedSinceJumpDown = false;
    
 
 
@@ -41,8 +41,15 @@ public class MarioMovementController : MonoBehaviour
     }
 
     // Using standard update to catch all input down/ups
-    private void Update() {
+    private void FixedUpdate() {
         Movement();
+    }
+
+    private void Update() {
+        // Prevent bunny-hopping
+        if (Input.GetButtonUp("Jump")) {
+            jumpedSinceJumpDown = false;
+        }
     }
 
     private void Movement() {
@@ -51,12 +58,15 @@ public class MarioMovementController : MonoBehaviour
         
         bool grounded = IsGrounded();
 
+        Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
+
         // Jumping/Falling
         if (grounded) {
             velocity.x = 0; // Velocity should be directly based on input when grounded.
             velocity.y = -groundStickingVelocity;
-            if (Input.GetButtonDown("Jump")) {
+            if (Input.GetButton("Jump") && !jumpedSinceJumpDown) {
                 Jump();
+                jumpedSinceJumpDown = true;
             }
         } else {
             // Apply acceleration due to gravity
@@ -66,7 +76,7 @@ public class MarioMovementController : MonoBehaviour
                 g = jumpHoldGravityStrength;
             }
 
-            velocity.y = Mathf.Clamp(velocity.y - g * Time.deltaTime, -terminalVelocity, terminalVelocity);
+            velocity.y = Mathf.Clamp(velocity.y - g * Time.fixedDeltaTime, -terminalVelocity, terminalVelocity);
         }
 
         // Horizontal movement
@@ -85,7 +95,7 @@ public class MarioMovementController : MonoBehaviour
 
     private void Jump () {
         // Not super authentic, while running does increase your jump height, it's not just going off the run button being held down, but this approximates it well enough.  
-        velocity.y = Input.GetButton("Jump") ? jumpImpulseRunning : jumpImpulse;
+        velocity.y = jumpImpulse;
     }
 
     private bool IsGrounded () {

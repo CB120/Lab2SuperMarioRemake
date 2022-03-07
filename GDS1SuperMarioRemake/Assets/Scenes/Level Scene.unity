@@ -9508,6 +9508,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.014900804
       objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: airControl
+      value: 0.1171875
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: jumpImpulse
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: distance
+      value: 0.375
+      objectReference: {fileID: 0}
     - target: {fileID: 1036568373, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Size.x
       value: 0.2626853
@@ -17252,19 +17268,19 @@ Transform:
   - {fileID: 68480980}
   - {fileID: 874165821}
   - {fileID: 1119737654}
-  - {fileID: 1009225551}
-  - {fileID: 1766231231}
-  - {fileID: 2070143764}
-  - {fileID: 817186940}
-  - {fileID: 1212060064}
-  - {fileID: 601960443}
   - {fileID: 848456097}
+  - {fileID: 1009225551}
+  - {fileID: 1212060064}
+  - {fileID: 2070143764}
+  - {fileID: 549614991}
+  - {fileID: 1766231231}
+  - {fileID: 817186940}
   - {fileID: 1681137735}
+  - {fileID: 601960443}
   - {fileID: 1514640192}
   - {fileID: 11219004}
-  - {fileID: 549614991}
-  - {fileID: 1009122378}
   - {fileID: 2119205062}
+  - {fileID: 1009122378}
   - {fileID: 492521772}
   - {fileID: 69043212}
   m_Father: {fileID: 711676982}
