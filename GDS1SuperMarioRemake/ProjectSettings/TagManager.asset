@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Head Hitbox
   - KoopaHeadHitbox
+  - Coin
   layers:
   - Default
   - TransparentFX
