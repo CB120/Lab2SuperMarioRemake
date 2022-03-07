@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    public float goombaSpeed;
+    public float enemySpeed;
     private bool wallCollision = false;
     public GameObject Mario;
-
+    //Camera cam = Camera.main;
 
 
     
@@ -21,15 +21,18 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (wallCollision == false)
+        //Vector3 screenPoint = cam.WorldToScreenPoint(Mario.transform.position);
+        
+        if (wallCollision == false)
                 {
-                    transform.Translate(Vector2.left * goombaSpeed * Time.deltaTime);
+                    transform.Translate(Vector2.left * enemySpeed * Time.deltaTime);
                 }
                 else if (wallCollision == true)
                 {
-                    transform.Translate(Vector2.right * goombaSpeed * Time.deltaTime);
+                    transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
                 }
 
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,14 +51,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject == Mario)
-        {
-            Debug.Log("lets goooo");
-            Destroy(this);
-        }
-    }
+   
 
 
 

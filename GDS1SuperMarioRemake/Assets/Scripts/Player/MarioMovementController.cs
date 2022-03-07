@@ -31,6 +31,14 @@ public class MarioMovementController : MonoBehaviour
     
     [SerializeField] float airControl;
 
+
+    // Reference to koopaShell
+    public GameObject KoopaShell;
+
+    // Reference to UI 
+    ScoreController Score;
+
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         groundedTest = GetComponent<GroundedTest>();
@@ -91,6 +99,24 @@ public class MarioMovementController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (groundedTest.IsHittingCeiling()) {
             velocity.y = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Head Hitbox")
+        {
+            Destroy(collision.transform.parent.gameObject);
+            Debug.Log("Hit");
+            Score.score += 100;
+        }
+
+        if(collision.gameObject.tag == "KoopaHeadHitbox")
+        {
+            Destroy(collision.transform.parent.gameObject);
+            Score.score += 100;
+            Instantiate(KoopaShell);
+            Debug.Log("Hit");
         }
     }
 
