@@ -311,3 +311,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
+  Score: {fileID: 0}
