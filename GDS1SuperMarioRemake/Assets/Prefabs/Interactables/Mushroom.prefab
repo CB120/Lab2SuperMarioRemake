@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -8688194429216029591}
   m_Layer: 0
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,6 @@ MonoBehaviour:
   originOffset: 0.75
   maxDistance: 0.25
   speed: 2
-  trigger: {fileID: -8688194429216029591}
 --- !u!50 &-5163442700292048385
 Rigidbody2D:
   serializedVersion: 4
@@ -155,7 +154,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.004598379, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -166,7 +165,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75168467, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &-8688194429216029591
 BoxCollider2D:

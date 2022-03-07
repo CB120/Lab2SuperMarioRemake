@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MushroomMovement : MonoBehaviour
+public class InteractablesMovement : MonoBehaviour
 {
 
     public float originOffset = 1f;
@@ -38,11 +38,7 @@ public class MushroomMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.tag == "Pipe" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Pipe" || collision.gameObject.tag == "Enemy")
         {
             isMovingRight = !isMovingRight;
         }

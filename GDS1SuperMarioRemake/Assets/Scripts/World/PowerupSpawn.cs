@@ -48,13 +48,13 @@ public class PowerupSpawn : MonoBehaviour
         switch (powerupType)
         {
             case Powerup.mushroom:
-                GetComponent<MushroomMovement>().enabled = true;
+                GetComponent<InteractablesMovement>().enabled = true;
                 break;
             case Powerup.fireFlower:
 
                 break;
             case Powerup.starMan:
-                GetComponent<StarmanMovement>().enabled = true;
+                GetComponent<InteractablesMovement>().enabled = true;
                 break;
             default:
 

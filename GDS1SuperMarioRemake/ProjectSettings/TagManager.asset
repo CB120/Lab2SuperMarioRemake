@@ -9,6 +9,10 @@ TagManager:
   - Head Hitbox
   - KoopaHeadHitbox
   - Coin
+  - Mushroom
+  - Starman
+  - Flower
+  - 1UP
   layers:
   - Default
   - TransparentFX

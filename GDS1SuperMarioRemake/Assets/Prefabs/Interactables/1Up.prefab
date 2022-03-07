@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5302263750021127297}
   m_Layer: 0
   m_Name: 1Up
-  m_TagString: Untagged
+  m_TagString: 1UP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,4 +166,3 @@ MonoBehaviour:
   originOffset: 1
   maxDistance: 0.5
   speed: 0.5
-  trigger: {fileID: 0}

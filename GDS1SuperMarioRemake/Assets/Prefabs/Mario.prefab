@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 456508703}
   - component: {fileID: 4447907550775002921}
   - component: {fileID: -2758649687648224515}
+  - component: {fileID: -8398416353074084406}
   m_Layer: 6
   m_Name: Mario
   m_TagString: Player
@@ -312,3 +313,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
   Score: {fileID: 0}
+--- !u!114 &-8398416353074084406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910078361193223720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b570ab491a9bb4a39875bfe1f95e9d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
