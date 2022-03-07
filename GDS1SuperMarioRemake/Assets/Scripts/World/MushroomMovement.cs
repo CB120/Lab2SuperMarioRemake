@@ -9,12 +9,12 @@ public class MushroomMovement : MonoBehaviour
     public float maxDistance = 0.5f;
     public float speed = 0.5f;
     private bool isMovingRight = true;
-    public BoxCollider2D trigger;
+    // BoxCollider2D trigger;
     
 
     void Start()
     {
-        trigger.enabled = true;
+        //trigger.enabled = true;
     }
 
     // Update is called once per frame
