@@ -10,7 +10,7 @@ public class CameraScript : MonoBehaviour
     public float CameraYAxis;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
