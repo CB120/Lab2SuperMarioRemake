@@ -17,6 +17,7 @@ public class MarioStateController : MonoBehaviour
     }
 
     public static MarioState marioState = MarioState.small;
+    public static MarioState previousState = MarioState.small;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -50,6 +51,7 @@ public class MarioStateController : MonoBehaviour
     {
         if (marioState != MarioState.large)
         {
+            previousState = marioState;
             marioState = MarioState.large;
             //Make mario large
         }
@@ -61,15 +63,23 @@ public class MarioStateController : MonoBehaviour
 
     private void FireMario()
     {
+        previousState = marioState;
         marioState = MarioState.fire;
         //enable fire mario
     }
 
     private void InvincibleMario()
     {
+        previousState = marioState;
         marioState = MarioState.invincible;
-        //enable starman mario
+        Invoke("ExitInvincible", 5f);
 
+
+    }
+
+    private void ExitInvincible()
+    {
+        marioState = previousState;
     }
 
     private void PipeCinematic()

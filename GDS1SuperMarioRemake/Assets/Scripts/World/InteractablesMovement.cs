@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractablesMovement : MonoBehaviour
-{
-
-    public float originOffset = 1f;
-    public float maxDistance = 0.5f;
+    {    
     public float speed = 0.5f;
     private bool isMovingRight = true;
     // BoxCollider2D trigger;
@@ -38,7 +35,7 @@ public class InteractablesMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pipe" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag != "Untagged")
         {
             isMovingRight = !isMovingRight;
         }

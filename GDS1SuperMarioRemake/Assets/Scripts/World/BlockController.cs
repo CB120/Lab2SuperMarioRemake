@@ -23,6 +23,10 @@ public class BlockController : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
         scoreController = gameController.GetComponent<ScoreController>();
+        if(blockType == Blocks.LOOPCOINBRICK)
+        {
+            GetComponentInChildren<Animator>().SetBool("isLoopBlock", true);
+        }
     }
 
     public void ActivateBlock()
