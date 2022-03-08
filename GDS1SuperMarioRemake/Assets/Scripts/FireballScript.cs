@@ -9,6 +9,7 @@ public class FireballScript : MonoBehaviour
     public float HorizontalVelocity;
     private bool wallCollided = false;
     private Animator animator;
+    //public ScoreController Score;
 
     void Start()
     {
@@ -25,7 +26,13 @@ public class FireballScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") OnContact();
+        if (collision.gameObject.tag == "Enemy")
+        {
+            OnContact();
+            Destroy(collision.gameObject);
+            Debug.Log("Hit");
+           // Score.score += 100;
+        }
         else rb.velocity = new Vector2(rb.velocity.x, 7f);
     }
 
