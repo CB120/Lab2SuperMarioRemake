@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MarioAnimationController : MonoBehaviour
 {
-    //Variables that determine which animation to play
-    private float lastDirectionGiven = 0;
-
     //External References
     private Animator animator;
     private Rigidbody2D rb;
@@ -20,13 +17,6 @@ public class MarioAnimationController : MonoBehaviour
         rb = gameObject.transform.parent.GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         groundedTest = gameObject.transform.parent.GetComponent<GroundedTest>();
-        lastDirectionGiven = 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -57,8 +47,11 @@ public class MarioAnimationController : MonoBehaviour
 
     void SetAnimatorParams()
     {
+        //Update the main movement parameters
         animator.SetBool("isGrounded", groundedTest.IsGrounded());
         animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxis("Horizontal")));
+
+        //Update the throwing parameter based on if the player is throwing
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             animator.SetBool("isThrowing", true);
@@ -67,12 +60,8 @@ public class MarioAnimationController : MonoBehaviour
         {
             animator.SetBool("isThrowing", false);
         }
-        //else if (Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    animator.SetBool("isThrowing", false);
-        //}
 
-        //Debug Inputs
+        //Debug Inputs - will delete later
         if (Input.GetKeyDown(KeyCode.I))
         {
             GrowMario();
@@ -87,6 +76,7 @@ public class MarioAnimationController : MonoBehaviour
         }
     }
 
+    //Update the animation speed dependent on user input
     void SetAnimationSpeed()
     {
         //Speed up Mario's animation if he is sprinting
@@ -100,22 +90,28 @@ public class MarioAnimationController : MonoBehaviour
         }
     }
 
+    //Update Mario's animation parameters to switch to big Mario
     public void GrowMario()
     {
         animator.SetBool("isBig", true);
+        animator.SetBool("isFire", false);
     }
 
+    //Update Mario's animation parameters to switch to fire Mario
     public void FireMario()
     {
+        animator.SetBool("isBig", true);
         animator.SetBool("isFire", true);
     }
 
+    //Update Mario's animation parameters to switch back to small Mario
     public void ShrinkMario()
     {
         animator.SetBool("isBig", false);
         animator.SetBool("isFire", false);
     }
 
+    //Update Mario's animation parameters to switch to the dead animation
     public void KillMario()
     {
         animator.SetBool("isBig", false);
