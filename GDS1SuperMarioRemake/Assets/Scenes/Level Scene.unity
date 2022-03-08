@@ -10055,6 +10055,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978390818}
     m_Modifications:
+    - target: {fileID: 1918614750, guid: 9ffe6264d9a8e4da0b2d8a218c41098e, type: 3}
+      propertyPath: pickup
+      value: 
+      objectReference: {fileID: 4525570038992283739, guid: 7b297a97d8a674d89bb0f538708f3465, type: 3}
     - target: {fileID: 5226294092847993857, guid: 9ffe6264d9a8e4da0b2d8a218c41098e, type: 3}
       propertyPath: m_Name
       value: QuestionBlock
@@ -10705,6 +10709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978390818}
     m_Modifications:
+    - target: {fileID: 1918614750, guid: 9ffe6264d9a8e4da0b2d8a218c41098e, type: 3}
+      propertyPath: pickup
+      value: 
+      objectReference: {fileID: 4525570038992283739, guid: 7b297a97d8a674d89bb0f538708f3465, type: 3}
     - target: {fileID: 5226294092847993857, guid: 9ffe6264d9a8e4da0b2d8a218c41098e, type: 3}
       propertyPath: m_Name
       value: QuestionBlock
