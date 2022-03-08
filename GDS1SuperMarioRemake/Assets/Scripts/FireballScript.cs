@@ -9,13 +9,17 @@ public class FireballScript : MonoBehaviour
     public float HorizontalVelocity;
     private bool wallCollided = false;
     private Animator animator;
-    //public ScoreController Score;
+    public ScoreController Score;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
         rb.velocity = new Vector2(HorizontalVelocity, rb.velocity.y);
         animator = GetComponent<Animator>();
+        Score = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreController>();
     }
 
     // Update is called once per frame
@@ -31,9 +35,9 @@ public class FireballScript : MonoBehaviour
             OnContact();
             Destroy(collision.gameObject);
             Debug.Log("Hit");
-           // Score.score += 100;
+            Score.score += 100;
         }
-        else rb.velocity = new Vector2(rb.velocity.x, 7f);
+        else if (rb != null) rb.velocity = new Vector2(rb.velocity.x, 7f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +48,7 @@ public class FireballScript : MonoBehaviour
     private void OnContact()
     {
         wallCollided = true;
-        Destroy(rb);
+        if (rb != null) Destroy(rb);
         animator.SetBool("Boom", true);
     }
 }
