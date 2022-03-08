@@ -108,9 +108,9 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.dead;
             GetComponent<MarioMovementController>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
-            transform.GetChild(0).GetComponent<MarioAnimationController>().KillMario();
+            
             rb.gravityScale = 1;
-            rb.AddForce(transform.up * 600);
+            rb.AddForce(transform.up * 200);
             Invoke("MarioIsDead", 5f);
         }
         else if (marioState == MarioState.large || marioState == MarioState.fire)
