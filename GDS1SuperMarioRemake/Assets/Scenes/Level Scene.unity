@@ -9637,7 +9637,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: marioState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2758649687648224515, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score
@@ -17443,8 +17443,8 @@ Transform:
   - {fileID: 2119205062}
   - {fileID: 1009122378}
   - {fileID: 492521772}
-  - {fileID: 69043212}
   - {fileID: 654422073}
+  - {fileID: 69043212}
   - {fileID: 1701735117}
   m_Father: {fileID: 711676982}
   m_RootOrder: 2
@@ -23218,6 +23218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1432372371}
   timeLeft: 400
+  Mario: {fileID: 0}
+  marioStateController: {fileID: 0}
 --- !u!114 &2115240826
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -122,13 +122,7 @@ public class MarioStateController : MonoBehaviour
     {
         if(marioState == MarioState.small)
         {
-            marioState = MarioState.dead;
-            GetComponent<MarioMovementController>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            transform.GetChild(0).GetComponent<MarioAnimationController>().KillMario();
-            rb.gravityScale = 1;
-            rb.AddForce(transform.up * 600);
-            Invoke("MarioIsDead", 5f);
+            MarioIsDead();
         }
         else if (marioState == MarioState.large || marioState == MarioState.fire)
         {
@@ -145,10 +139,21 @@ public class MarioStateController : MonoBehaviour
         transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
     }
 
-    private void MarioIsDead()
+    public void MarioIsDead()
     {
+        marioState = MarioState.dead;
+        GetComponent<MarioMovementController>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        transform.GetChild(0).GetComponent<MarioAnimationController>().KillMario();
+        rb.gravityScale = 1;
+        rb.AddForce(transform.up * 600);
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        gameController.GetComponent<GameController>().Respawn();
+        gameController.GetComponent<GameController>().PlayerIsDead();
+    }
+
+    private void RespawnMario()
+    {
+        
     }
 
 

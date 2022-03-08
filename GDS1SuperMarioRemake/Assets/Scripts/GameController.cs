@@ -9,18 +9,17 @@ public class GameController : MonoBehaviour
     //------Timer------
     [SerializeField] private Text timerText;
     [SerializeField] private int timeLeft = 400;
+    [SerializeField] private GameObject Mario;
+    [SerializeField] private MarioStateController marioStateController;
 
 
     void Start()
     {
+        Mario = GameObject.FindGameObjectWithTag("Player");
+        marioStateController = Mario.GetComponent<MarioStateController>();
         StartTimer();
     }
 
-  
-    void Update()
-    {
-        
-    }
 
 
     /*==================
@@ -33,15 +32,28 @@ public class GameController : MonoBehaviour
             timerText.text = "Time" + "\n" + timeLeft.ToString();
             timeLeft--;
         }
+        else
+        {
+            CancelInvoke();
+            timeLeft = 0;
+            timerText.text = "Time" + "\n" + timeLeft.ToString();
+            marioStateController.MarioIsDead();
+        }
     }
 
 
     void StartTimer()
     {
-        InvokeRepeating("DecrementTime", 0f, 0.5f);
+        InvokeRepeating("DecrementTime", 0f, 0.1f);
     }
 
-    public void Respawn()
+    public void PlayerIsDead()
+    {
+        CancelInvoke();
+        Invoke("RestartScene", 5f);
+    }
+
+    private void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
