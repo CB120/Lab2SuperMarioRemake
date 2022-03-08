@@ -9623,6 +9623,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273799482}
     m_Modifications:
+    - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: marioState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -2758649687648224515, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score
       value: 

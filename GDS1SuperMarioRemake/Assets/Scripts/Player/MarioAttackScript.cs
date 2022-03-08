@@ -20,13 +20,13 @@ public class MarioAttackScript : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
             Debug.Log("Hit");
-            Score.score += 100;
+            Score.IncreaseScore(100);
         }
 
         if (collision.gameObject.tag == "KoopaHeadHitbox")
         {
             Transform KoopaTransform = collision.gameObject.GetComponent<Transform>();
-            Score.score += 100;
+            Score.IncreaseScore(100);
             Instantiate(KoopaShell, new Vector3(KoopaTransform.position.x, 2.39f, KoopaTransform.position.z), Quaternion.identity);
             Debug.Log("Hit");
             Destroy(collision.transform.parent.gameObject);

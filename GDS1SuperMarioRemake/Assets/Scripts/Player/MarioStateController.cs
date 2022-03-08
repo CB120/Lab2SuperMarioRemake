@@ -42,6 +42,14 @@ public class MarioStateController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
+                if(marioState == MarioState.invincible)
+                {
+                    //collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                    //collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    //collision.gameObject.GetComponent<EnemyMovement>().enabled = false;
+                    Destroy(collision.gameObject);
+                    break;
+                }
                 OnEnemyCollision();
                 break;
         }
@@ -58,7 +66,7 @@ public class MarioStateController : MonoBehaviour
 
     private void GrowMario()
     {
-        if (marioState != MarioState.large)
+        if (marioState != MarioState.large || marioState != MarioState.fire || marioState != MarioState.invincible)
         {
             previousState = marioState;
             marioState = MarioState.large;
@@ -72,10 +80,14 @@ public class MarioStateController : MonoBehaviour
 
     private void FireMario()
     {
+       
         previousState = marioState;
-        marioState = MarioState.fire;
         GetComponent<FireShootScript>().enabled = true;
-        //enable fire mario
+        if (marioState != MarioState.invincible)
+        {
+            marioState = MarioState.fire;
+        }
+        
     }
 
     private void InvincibleMario()
@@ -131,7 +143,7 @@ public class MarioStateController : MonoBehaviour
     private void MarioIsDead()
     {
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        //gameController.GetComponent<GameController>().Respawn();
+        gameController.GetComponent<GameController>().Respawn();
     }
 
 
