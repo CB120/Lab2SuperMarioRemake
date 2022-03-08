@@ -16732,7 +16732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0660640214895848a0dc0d235cf38a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
 --- !u!1001 &1651108621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23410,6 +23409,10 @@ PrefabInstance:
       propertyPath: flagLowering
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2019360202943287661, guid: 8cd6b4726f7cfd342ae2b6237f557e61, type: 3}
+      propertyPath: cinematicMarioPrefab
+      value: 
+      objectReference: {fileID: 1707679945}
     - target: {fileID: 2019360202943287662, guid: 8cd6b4726f7cfd342ae2b6237f557e61, type: 3}
       propertyPath: m_Name
       value: End Flag

@@ -58,7 +58,19 @@ public class MarioAnimationController : MonoBehaviour
     void SetAnimatorParams()
     {
         animator.SetBool("isGrounded", groundedTest.IsGrounded());
-        animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxis("Horizontal")));  
+        animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxis("Horizontal")));
+        if (Input.GetKey(KeyCode.I))
+        {
+            GrowMario();
+        }
+        else if (Input.GetKey(KeyCode.O))
+        {
+            FireMario();
+        }
+        else if (Input.GetKey(KeyCode.P))
+        {
+            ShrinkMario();
+        }
     }
 
     void SetAnimationSpeed()
