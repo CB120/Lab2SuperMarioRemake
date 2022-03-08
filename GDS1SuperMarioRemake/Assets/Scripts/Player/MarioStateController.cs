@@ -42,7 +42,7 @@ public class MarioStateController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
-                TakeDamage();
+                OnEnemyCollision();
                 break;
         }
     }
@@ -101,7 +101,7 @@ public class MarioStateController : MonoBehaviour
         marioState = MarioState.onFlag;
     }
 
-    private void TakeDamage()
+    private void OnEnemyCollision()
     {
         if(marioState == MarioState.small)
         {
@@ -113,6 +113,17 @@ public class MarioStateController : MonoBehaviour
             rb.AddForce(transform.up * 600);
             Invoke("MarioIsDead", 5f);
         }
+        else if (marioState == MarioState.large || marioState == MarioState.fire)
+        {
+            marioState = MarioState.small;
+            TakeDamage();//Do animation stuff here to make mario small again
+
+        }
+    }
+
+    private void TakeDamage()
+    {
+        //Do animation shit here n that to make mario small
     }
 
     private void MarioIsDead()
