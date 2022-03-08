@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 3010262089059544071}
   - component: {fileID: 3010262089059544067}
   - component: {fileID: 3010262089059544064}
+  - component: {fileID: 405638019148617723}
   m_Layer: 0
   m_Name: Goomba
   m_TagString: Enemy
@@ -207,3 +208,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 1.5
   Mario: {fileID: 7910078361193223720, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+--- !u!95 &405638019148617723
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010262089059544068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c270a3d3f97d4545864eb6cd1e5457f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

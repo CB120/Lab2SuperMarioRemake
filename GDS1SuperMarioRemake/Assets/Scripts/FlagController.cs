@@ -46,7 +46,7 @@ public class FlagController : MonoBehaviour
     void OnMarioCollision(GameObject mario){
         //Store Mario info
         string marioState = mario.GetComponent<MarioStateController>().GetStateAsString();
-        Vector3 marioPosition = mario.transform.position;
+        Vector3 marioPosition = new Vector3(199.5f, mario.transform.position.y, 0f);
         mario.SetActive(false);
 
         //Spawn and set up cinematic clone

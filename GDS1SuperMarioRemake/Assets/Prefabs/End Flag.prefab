@@ -158,6 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5cefe60d4f53349a8d35ecf12dc2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flagBase: {x: 199.5, y: 3.5}
+  descentSpeed: 3
+  flagLowering: 0
+  cinematicMarioPrefab: {fileID: 8699346100804911931, guid: 45d25e029fd94c347bcee22af5e8b83d, type: 3}
 --- !u!1 &2019360203031954669
 GameObject:
   m_ObjectHideFlags: 0
