@@ -62,6 +62,7 @@ public class MarioStateController : MonoBehaviour
         {
             previousState = marioState;
             marioState = MarioState.large;
+            transform.GetChild(0).GetComponent<MarioAnimationController>().GrowMario();
             //Make mario large
         }
         else
@@ -74,6 +75,7 @@ public class MarioStateController : MonoBehaviour
     {
         previousState = marioState;
         marioState = MarioState.fire;
+        transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
 
@@ -124,6 +126,7 @@ public class MarioStateController : MonoBehaviour
     private void TakeDamage()
     {
         //Do animation shit here n that to make mario small
+        transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
     }
 
     private void MarioIsDead()

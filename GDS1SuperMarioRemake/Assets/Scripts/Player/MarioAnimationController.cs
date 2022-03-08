@@ -59,15 +59,29 @@ public class MarioAnimationController : MonoBehaviour
     {
         animator.SetBool("isGrounded", groundedTest.IsGrounded());
         animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxis("Horizontal")));
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            animator.SetBool("isThrowing", true);
+        }
+        else
+        {
+            animator.SetBool("isThrowing", false);
+        }
+        //else if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    animator.SetBool("isThrowing", false);
+        //}
+
+        //Debug Inputs
+        if (Input.GetKeyDown(KeyCode.I))
         {
             GrowMario();
         }
-        else if (Input.GetKey(KeyCode.O))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             FireMario();
         }
-        else if (Input.GetKey(KeyCode.P))
+        else if (Input.GetKeyDown(KeyCode.P))
         {
             ShrinkMario();
         }
@@ -76,7 +90,7 @@ public class MarioAnimationController : MonoBehaviour
     void SetAnimationSpeed()
     {
         //Speed up Mario's animation if he is sprinting
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && animator.GetFloat("Velocity") > 0.1f)
         {
             animator.speed = 1.5f;
         }
