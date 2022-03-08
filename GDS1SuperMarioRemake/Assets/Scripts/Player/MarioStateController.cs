@@ -70,6 +70,7 @@ public class MarioStateController : MonoBehaviour
         {
             previousState = marioState;
             marioState = MarioState.large;
+            transform.GetChild(0).GetComponent<MarioAnimationController>().GrowMario();
             //Make mario large
         }
         else
@@ -88,6 +89,9 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.fire;
         }
         
+        
+        transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
+        //enable fire mario
     }
 
     private void InvincibleMario()
@@ -121,9 +125,9 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.dead;
             GetComponent<MarioMovementController>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
-            
+            transform.GetChild(0).GetComponent<MarioAnimationController>().KillMario();
             rb.gravityScale = 1;
-            rb.AddForce(transform.up * 200);
+            rb.AddForce(transform.up * 600);
             Invoke("MarioIsDead", 5f);
         }
         else if (marioState == MarioState.large || marioState == MarioState.fire)
@@ -138,6 +142,7 @@ public class MarioStateController : MonoBehaviour
     {
         GetComponent<FireShootScript>().enabled = false;
         //Do animation shit here n that to make mario small
+        transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
     }
 
     private void MarioIsDead()
@@ -147,4 +152,13 @@ public class MarioStateController : MonoBehaviour
     }
 
 
+    //Added by Ethan bc he was too tired to work out how to reference an enum across classes
+    public string GetStateAsString(){
+        switch (marioState){
+            case MarioState.large: return "large";
+            case MarioState.fire: return "fire";
+            case MarioState.invincible: return "invincible";
+            default: return "small";
+        }
+    }
 }
