@@ -6,20 +6,13 @@ public class FireShootScript : MonoBehaviour
 {
     public GameObject Fireball;
     private bool isRight = true;
-    public MarioStateController stateController;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        stateController = GetComponent<MarioStateController>();
-    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetAxis("Horizontal") > 0) isRight = true;
         else if (Input.GetAxis("Horizontal") < 0) isRight = false;
-        if (Input.GetButtonDown("Run") && stateController.marioState == MarioStateController.MarioState.fire)
+        if (Input.GetButtonDown("Run") )
         {
             if (isRight == true)
             {
