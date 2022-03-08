@@ -9522,7 +9522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: distance
-      value: 0.375
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1036568373, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Size.x
