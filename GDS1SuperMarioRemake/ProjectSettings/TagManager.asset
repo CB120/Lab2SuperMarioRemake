@@ -13,6 +13,7 @@ TagManager:
   - Starman
   - Flower
   - 1UP
+  - KoopaShell
   layers:
   - Default
   - TransparentFX
