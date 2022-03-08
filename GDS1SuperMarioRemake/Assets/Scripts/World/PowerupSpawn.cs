@@ -26,7 +26,7 @@ public class PowerupSpawn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (bIsSpawning)
         {
@@ -49,6 +49,7 @@ public class PowerupSpawn : MonoBehaviour
         {
             case Powerup.mushroom:
                 GetComponent<InteractablesMovement>().enabled = true;
+                GetComponent<BoxCollider2D>().enabled = true;
                 break;
             case Powerup.fireFlower:
 

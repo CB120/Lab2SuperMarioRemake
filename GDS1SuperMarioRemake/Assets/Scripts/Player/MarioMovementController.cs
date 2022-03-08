@@ -32,8 +32,8 @@ public class MarioMovementController : MonoBehaviour
     [SerializeField] float airControl;
 
     bool jumpedSinceJumpDown = false;
-   
 
+    
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +50,7 @@ public class MarioMovementController : MonoBehaviour
         if (Input.GetButtonUp("Jump")) {
             jumpedSinceJumpDown = false;
         }
+        
     }
 
     private void Movement() {
@@ -58,7 +59,7 @@ public class MarioMovementController : MonoBehaviour
         
         bool grounded = IsGrounded();
 
-        Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
+        //Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
 
         // Jumping/Falling
         if (grounded) {
@@ -106,6 +107,8 @@ public class MarioMovementController : MonoBehaviour
         if (groundedTest.IsHittingCeiling()) {
             velocity.y = 0;
         }
+
+       
     }
 
   
