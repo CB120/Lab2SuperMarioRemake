@@ -26,16 +26,24 @@ public class CinematicController : MonoBehaviour
     SpriteRenderer sprite;
     Animator animator;
 
+
     //Engine-called
     void Start(){
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
         SetSprite();
+        SetBaseY();
     }
 
     void Update(){
         UpdatePosition();
+    }
+
+
+    //Animation Events
+    public void OnEndCinematicEnd(){
+        //BAXTER LOOK HERE
     }
 
 
@@ -54,6 +62,17 @@ public class CinematicController : MonoBehaviour
         }
     }
 
+    void SetBaseY(){
+        switch (marioState){
+            case "large":
+                flagBase.y = 4f; break;
+            case "largeFire":
+                flagBase.y = 4f; break;
+            default:
+                break;
+        }
+    }
+
 
         //Update
     void UpdatePosition(){
@@ -62,8 +81,28 @@ public class CinematicController : MonoBehaviour
                 transform.Translate(0f, descentSpeed * Time.deltaTime * -1f, 0f);
             } else {
                 atBottomOfPole = true;
-                //Play animation
+                animator.enabled = true;
+                animator.Play(GetAnimationName());
             }
         }
+    }
+
+
+    //Private functions
+    string GetAnimationName(){
+        string output = "Mario_Cinematic_End ";
+
+        switch (marioState){
+            case "large":
+                output += "Large"; break;
+            case "fire":
+                output += "Small Fire"; break;
+            case "largeFire":
+                output += "Large Fire"; break;
+            default:
+                output += "Small"; break;
+        }
+
+        return output;
     }
 }

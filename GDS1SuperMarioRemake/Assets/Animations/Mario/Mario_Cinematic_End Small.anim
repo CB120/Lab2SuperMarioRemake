@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mario_Cinematic_End
+  m_Name: Mario_Cinematic_End Small
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -54,9 +54,23 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 235420770, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+      value: {fileID: -1418832226, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 0.5
+      value: {fileID: -1742722317, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 0.6666667
+      value: {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 0.8333333
+      value: {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 1
+      value: {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 1.1666666
+      value: {fileID: -1742722317, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 1.3333334
+      value: {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - time: 1.5
+      value: {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
     - time: 1.5166667
-      value: {fileID: 235420770, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+      value: {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -83,8 +97,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 235420770, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
-    - {fileID: 235420770, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -1418832226, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -1742722317, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -1742722317, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: 542667586, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
+    - {fileID: -628545457, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -211,4 +232,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.5166667
+    functionName: OnEndCinematicEnd
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
