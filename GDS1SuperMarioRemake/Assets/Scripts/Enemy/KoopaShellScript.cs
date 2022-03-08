@@ -27,7 +27,7 @@ public class KoopaShellScript : MonoBehaviour
 
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(4.5f);
         Destroy(this.gameObject);
     }
 
@@ -56,10 +56,10 @@ public class KoopaShellScript : MonoBehaviour
                     Debug.Log("Hit with a shell");
                 }
 
-                if (collision.gameObject == Mario)
+                if (collision.gameObject.tag == "Player")
                 {
-                    // Kill mario 
-                }
+               
+            }
             }
         }
     }
