@@ -83,4 +83,13 @@ public class MarioStateController : MonoBehaviour
     }
 
 
+    //Added by Ethan bc he was too tired to work out how to reference an enum across classes
+    public string GetStateAsString(){
+        switch (marioState){
+            case MarioState.large: return "large";
+            case MarioState.fire: return "fire";
+            case MarioState.invincible: return "invincible";
+            default: return "small";
+        }
+    }
 }
