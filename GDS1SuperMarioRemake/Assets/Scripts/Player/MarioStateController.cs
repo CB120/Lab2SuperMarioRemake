@@ -16,8 +16,14 @@ public class MarioStateController : MonoBehaviour
 
     }
 
-    public static MarioState marioState = MarioState.small;
-    public static MarioState previousState = MarioState.small;
+    public  MarioState marioState = MarioState.small;
+    public  MarioState previousState = MarioState.small;
+    Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -34,6 +40,9 @@ public class MarioStateController : MonoBehaviour
             case "1UP":
                 //increase score
                 Destroy(collision.gameObject);
+                break;
+            case "Enemy":
+                TakeDamage();
                 break;
         }
     }
@@ -90,6 +99,26 @@ public class MarioStateController : MonoBehaviour
     private void FlagCinematic()
     {
         marioState = MarioState.onFlag;
+    }
+
+    private void TakeDamage()
+    {
+        if(marioState == MarioState.small)
+        {
+            marioState = MarioState.dead;
+            GetComponent<MarioMovementController>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            
+            rb.gravityScale = 1;
+            rb.AddForce(transform.up * 200);
+            Invoke("MarioIsDead", 5f);
+        }
+    }
+
+    private void MarioIsDead()
+    {
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        //gameController.GetComponent<GameController>().Respawn();
     }
 
 

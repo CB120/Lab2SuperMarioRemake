@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 11
   m_Sprite: {fileID: -842768552, guid: 38f407c2662a0e54887f6c462b8cb6ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -325,3 +325,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b570ab491a9bb4a39875bfe1f95e9d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marioState: 0
+  previousState: 0

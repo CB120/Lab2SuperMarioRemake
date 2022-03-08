@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3010262089059544064, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
+      propertyPath: Mario
+      value: 
+      objectReference: {fileID: 1570600362}
     - target: {fileID: 3010262089059544065, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -8596,6 +8600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273799482}
     m_Modifications:
+    - target: {fileID: 3010262089059544064, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
+      propertyPath: Mario
+      value: 
+      objectReference: {fileID: 1570600362}
     - target: {fileID: 3010262089059544065, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9670,11 +9678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292614216916486840, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.39
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3292614216916486840, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.51
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3292614216916486840, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9734,7 +9742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925441429425672690, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7910078361193223720, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Name
@@ -10607,6 +10615,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273799482}
     m_Modifications:
+    - target: {fileID: 3010262089059544064, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
+      propertyPath: Mario
+      value: 
+      objectReference: {fileID: 1570600362}
     - target: {fileID: 3010262089059544065, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -16847,6 +16859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273799482}
     m_Modifications:
+    - target: {fileID: 3010262089059544064, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
+      propertyPath: Mario
+      value: 
+      objectReference: {fileID: 1570600362}
     - target: {fileID: 3010262089059544065, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -23423,5 +23439,9 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8979856589523943765, guid: aac8b6734381d2041a15000e972aee4b, type: 3}
+      propertyPath: Mario
+      value: 
+      objectReference: {fileID: 1570600362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac8b6734381d2041a15000e972aee4b, type: 3}
