@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     void StartTimer()
     {
-        InvokeRepeating("DecrementTime", 0f, 0.1f);
+        InvokeRepeating("DecrementTime", 0f, 0.5f);
     }
 
     public void PlayerIsDead()

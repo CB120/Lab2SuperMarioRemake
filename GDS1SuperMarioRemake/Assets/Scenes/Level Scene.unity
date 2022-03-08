@@ -8230,6 +8230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978390818}
     m_Modifications:
+    - target: {fileID: 2628382010107802324, guid: d0ab35440de604fd4a6d36b1ac4720ab, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e958b8dd13adc47acbc31b1692ca82a4, type: 2}
     - target: {fileID: 4575727213353908491, guid: d0ab35440de604fd4a6d36b1ac4720ab, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -9637,7 +9641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: marioState
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2758649687648224515, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score

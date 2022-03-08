@@ -35,7 +35,7 @@ public class FireballScript : MonoBehaviour
             OnContact();
             Destroy(collision.gameObject);
             Debug.Log("Hit");
-            Score.score += 100;
+            Score.IncreaseScore(100);
         }
         else if (rb != null) rb.velocity = new Vector2(rb.velocity.x, 7f);
     }

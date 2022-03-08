@@ -25,6 +25,9 @@ public class MarioStateController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    //======================================
+    //              COLLISIONS
+    //======================================
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
@@ -64,6 +67,9 @@ public class MarioStateController : MonoBehaviour
         }
     }
 
+    //======================================
+    //              ABILITY STATES
+    //======================================
     private void GrowMario()
     {
         if (marioState != MarioState.large || marioState != MarioState.fire || marioState != MarioState.invincible)
@@ -108,6 +114,9 @@ public class MarioStateController : MonoBehaviour
         marioState = previousState;
     }
 
+    //======================================
+    //              NON ABILITY STATES
+    //======================================
     private void PipeCinematic()
     {
         marioState = MarioState.inPipe;
@@ -118,6 +127,9 @@ public class MarioStateController : MonoBehaviour
         marioState = MarioState.onFlag;
     }
 
+    //======================================
+    //              ENEMY COLLISIONS
+    //======================================
     private void OnEnemyCollision()
     {
         if(marioState == MarioState.small)
