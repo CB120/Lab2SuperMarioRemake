@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 910077746406070578}
   - component: {fileID: 2664683102874219521}
   - component: {fileID: 8979856589523943765}
+  - component: {fileID: 3682862451853612150}
   m_Layer: 0
   m_Name: KoopaTroopa
   m_TagString: Enemy
@@ -149,6 +150,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 1
   Mario: {fileID: 7910078361193223720, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+--- !u!95 &3682862451853612150
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497135536500221332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7f2ad03421c2c948b29db68350ef325, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6509712467490176520
 GameObject:
   m_ObjectHideFlags: 0
