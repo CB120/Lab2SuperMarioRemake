@@ -74,6 +74,7 @@ public class MarioStateController : MonoBehaviour
     {
         previousState = marioState;
         marioState = MarioState.fire;
+        GetComponent<FireShootScript>().enabled = true;
         //enable fire mario
     }
 
@@ -123,6 +124,7 @@ public class MarioStateController : MonoBehaviour
 
     private void TakeDamage()
     {
+        GetComponent<FireShootScript>().enabled = false;
         //Do animation shit here n that to make mario small
     }
 
