@@ -101,4 +101,11 @@ public class MarioAnimationController : MonoBehaviour
         animator.SetBool("isBig", false);
         animator.SetBool("isFire", false);
     }
+
+    public void KillMario()
+    {
+        animator.SetBool("isBig", false);
+        animator.SetBool("isFire", false);
+        animator.SetBool("isDead", true);
+    }
 }
