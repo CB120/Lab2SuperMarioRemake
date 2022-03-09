@@ -36,6 +36,8 @@ public class MarioAttackScript : MonoBehaviour
             Score.IncreaseScore(100);
             
             SoundManager.PlaySound(hitEnemySound);
+            // Jump off of head
+            GetComponent<MarioMovementController>().QueueJump();
         }
 
         if (collision.gameObject.tag == "KoopaHeadHitbox")
@@ -48,6 +50,8 @@ public class MarioAttackScript : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
         
             SoundManager.PlaySound(hitEnemySound);
+            // Jump off of head
+            GetComponent<MarioMovementController>().QueueJump();
         }
         Debug.Log(collision.gameObject.tag);
     }

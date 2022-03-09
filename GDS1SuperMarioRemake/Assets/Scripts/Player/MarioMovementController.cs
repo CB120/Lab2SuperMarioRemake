@@ -74,14 +74,10 @@ public class MarioMovementController : MonoBehaviour
         //Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
 
         // Jumping/Falling
+
         if (grounded) {
             velocity.x = 0; // Velocity should be directly based on input when grounded.
             velocity.y = -groundStickingVelocity;
-            if (jumpNextFrame) {
-                Jump();
-                jumpMomentum = speed * input.x;
-                jumpNextFrame = false;
-            }
         } else {
             // Apply acceleration due to gravity
             float g = gravityStrength;
@@ -91,6 +87,14 @@ public class MarioMovementController : MonoBehaviour
             }
 
             velocity.y = Mathf.Clamp(velocity.y - g * Time.fixedDeltaTime, -terminalVelocity, terminalVelocity);
+        }
+
+        // Actual jumping is handled OUTSIDE OF GROUNDED CHECK
+        // All jump calls should perform a grounded check first.
+        if (jumpNextFrame) {
+            Jump();
+            jumpMomentum = speed * input.x;
+            jumpNextFrame = false;
         }
 
         // Horizontal movement
