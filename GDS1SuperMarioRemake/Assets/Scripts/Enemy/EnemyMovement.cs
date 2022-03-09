@@ -8,7 +8,12 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed;
     private bool wallCollision = false;
     public GameObject Mario;
-    
+    private SpriteRenderer sp;
+
+    private void Start()
+    {
+        sp = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -17,11 +22,13 @@ public class EnemyMovement : MonoBehaviour
         if (wallCollision == false)
                 {
                     transform.Translate(Vector2.left * enemySpeed * Time.deltaTime);
+                    
                 }
                 else if (wallCollision == true)
                 {
                     transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
-                }
+                sp.flipX = true;
+        }
 
     }
 
