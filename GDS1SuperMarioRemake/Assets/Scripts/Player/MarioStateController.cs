@@ -24,9 +24,26 @@ public class MarioStateController : MonoBehaviour
 
     [SerializeField] KoopaShellScript Shell;
 
+    //Variables that control Mario's hitbox ~ David 
+    [SerializeField] private float smallColliderX;
+    [SerializeField] private float smallColliderY;
+    [SerializeField] private float bigColliderX;
+    [SerializeField] private float bigColliderY;
+    [SerializeField] private Vector2 smallColliderOffset;
+    [SerializeField] private Vector2 bigColliderOffset;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        //Initialise initial collider sizes
+        smallColliderX = MainCollider.size.x;
+        smallColliderY = MainCollider.size.y;
+        smallColliderOffset = MainCollider.offset;
+        //Determine the size of big/fire Mario's colliders based on small collider
+        bigColliderX = smallColliderX;
+        bigColliderY = smallColliderY * 2.0f;
+        bigColliderOffset = smallColliderOffset;
     }
 
     //======================================
@@ -92,12 +109,16 @@ public class MarioStateController : MonoBehaviour
 
             // Please comment out the below code if you want the game to work.. this is still a work in progress ~~ Christian
 
-            MainCollider.size = new Vector2(0.8116932f, 1.549417f);
-            MainCollider.offset = new Vector2(9.536743e-07f, -0.02277434f);
+            //MainCollider.size = new Vector2(0.8116932f, 1.549417f);
+            //MainCollider.offset = new Vector2(9.536743e-07f, -0.02277434f);
 
-            TriggerCollider.size = new Vector2(0.4951229f, 0.2364993f);
-            TriggerCollider.offset = new Vector2(-0.05248165f, 0.8842032f);
-            transform.Translate(new Vector2(0, 3f));
+            //TriggerCollider.size = new Vector2(0.4951229f, 0.2364993f);
+            //TriggerCollider.offset = new Vector2(-0.05248165f, 0.8842032f);
+            //transform.Translate(new Vector2(0, 3f));
+
+            /*Created a method that handles growing and shrinking - not sure why but Mario
+             won't take input once this is done*/
+            UpdateMariosHitbox(false);
         }
         else
         {
@@ -169,6 +190,7 @@ public class MarioStateController : MonoBehaviour
         GetComponent<FireShootScript>().enabled = false;
         //Do animation shit here n that to make mario small
         transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
+        UpdateMariosHitbox(true);
     }
 
     public void MarioIsDead()
@@ -188,6 +210,32 @@ public class MarioStateController : MonoBehaviour
         
     }
 
+    private void UpdateMariosHitbox(bool setToSmall)
+    {
+        if (!setToSmall)
+        {
+            if (GetComponent<GroundedTest>().IsGrounded())
+            {
+                transform.Translate(new Vector2(0, 1), Space.Self);
+            }
+            MainCollider.size = new Vector2(bigColliderX, bigColliderY);
+            MainCollider.offset = bigColliderOffset;
+            TriggerCollider.offset = new Vector2(TriggerCollider.offset.x, TriggerCollider.offset.y * 2);
+            
+        }
+        else
+        {
+            if (GetComponent<GroundedTest>().IsGrounded())
+            {
+                transform.Translate(new Vector2(0, 1), Space.Self);
+            }
+            MainCollider.size = new Vector2(smallColliderX, smallColliderY);
+            MainCollider.offset = smallColliderOffset;
+            TriggerCollider.offset = new Vector2(TriggerCollider.offset.x, TriggerCollider.offset.y / 2);
+        }
+
+        GetComponent<GroundedTest>().UpdateHitboxSize(setToSmall);
+    }
 
     //Added by Ethan bc he was too tired to work out how to reference an enum across classes
     public string GetStateAsString(){

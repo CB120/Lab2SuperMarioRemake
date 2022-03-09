@@ -9629,6 +9629,10 @@ PrefabInstance:
       propertyPath: marioState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: TriggerCollider
+      value: 
+      objectReference: {fileID: 1570600380}
     - target: {fileID: -2758649687648224515, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score
       value: 
@@ -9774,12 +9778,20 @@ PrefabInstance:
       value: 0.14090157
       objectReference: {fileID: 0}
     - target: {fileID: 3915037289409754579, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915037289409754579, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Offset.x
       value: 0.004273534
       objectReference: {fileID: 0}
     - target: {fileID: 3915037289409754579, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_Offset.y
       value: -0.45927095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915037289409754579, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5292269433347541022, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16662,6 +16674,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
   Score: {fileID: 2115240826}
+--- !u!61 &1570600380 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1036568373, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+  m_PrefabInstance: {fileID: 951872357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1604747347
 PrefabInstance:
   m_ObjectHideFlags: 0

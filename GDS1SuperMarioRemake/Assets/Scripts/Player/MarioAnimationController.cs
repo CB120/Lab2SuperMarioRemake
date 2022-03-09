@@ -25,6 +25,7 @@ public class MarioAnimationController : MonoBehaviour
         SetAnimatorOrientation();
         SetAnimatorParams();
         SetAnimationSpeed();
+        Debug.Log("Grounded: " + groundedTest.IsGrounded());
     }
 
     void SetAnimatorOrientation()
@@ -117,5 +118,17 @@ public class MarioAnimationController : MonoBehaviour
         animator.SetBool("isBig", false);
         animator.SetBool("isFire", false);
         animator.SetBool("isDead", true);
+    }
+
+    public void UpdateMariosHitbox(bool setSmall)
+    {
+        if (setSmall)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }

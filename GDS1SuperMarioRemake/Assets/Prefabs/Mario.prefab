@@ -267,6 +267,7 @@ MonoBehaviour:
   jumpImpulseRunning: 5
   jumpHoldGravityStrength: 2.85
   airControl: 0.234375
+  maxAirControl: 0
 --- !u!114 &456508703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marioState: 0
   previousState: 0
+  MainCollider: {fileID: 456508699}
+  TriggerCollider: {fileID: 3915037289409754579}
+  Shell: {fileID: 0}
 --- !u!114 &1325083395135208020
 MonoBehaviour:
   m_ObjectHideFlags: 0
