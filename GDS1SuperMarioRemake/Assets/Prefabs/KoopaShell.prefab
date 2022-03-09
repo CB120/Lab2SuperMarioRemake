@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8425725307046743194}
   - component: {fileID: 1116323375389609832}
   - component: {fileID: 8893306687980312411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KoopaShell
   m_TagString: KoopaShell
   m_Icon: {fileID: 0}

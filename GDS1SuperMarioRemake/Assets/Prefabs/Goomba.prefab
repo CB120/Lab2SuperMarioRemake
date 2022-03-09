@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8429783647991870695}
   - component: {fileID: 4477509368705434865}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head hitbox
   m_TagString: Head Hitbox
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3010262089059544064}
   - component: {fileID: 405638019148617723}
   - component: {fileID: 6911556173101787965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goomba
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -33,6 +33,23 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] private Vector2 smallColliderOffset;
     [SerializeField] private Vector2 bigColliderOffset;
 
+    //iFrame variables
+    private float invulnerabilityDuration;
+    private int flashCount;
+
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        for (int i = 0; i < flashCount; i++)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+            yield return new WaitForSeconds(invulnerabilityDuration / flashCount);
+            GetComponent<SpriteRenderer>().color = Color.white;
+            yield return new WaitForSeconds(invulnerabilityDuration / flashCount);
+        }
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -194,6 +211,7 @@ public class MarioStateController : MonoBehaviour
         //Do animation shit here n that to make mario small
         transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
         UpdateMariosHitbox(true);
+        StartCoroutine(Invulnerability());
     }
 
     public void MarioIsDead()
@@ -207,6 +225,7 @@ public class MarioStateController : MonoBehaviour
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().PlayerIsDead();
         gameController.GetComponent<MusicController>().ChangeMusic("Death", 0);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void RespawnMario()
@@ -224,8 +243,8 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(bigColliderX, bigColliderY);
             MainCollider.offset = bigColliderOffset;
-            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 2);
-            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y * 2);
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 1.5f);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y * 1.5f);
 
         }
         else
@@ -236,8 +255,8 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(smallColliderX, smallColliderY);
             MainCollider.offset = smallColliderOffset;
-            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 2);
-            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y / 2);
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 1.5f);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y / 1/5f);
         }
 
         GetComponent<GroundedTest>().UpdateHitboxSize(setToSmall);
@@ -249,6 +268,7 @@ public class MarioStateController : MonoBehaviour
             case MarioState.large: return "large";
             case MarioState.fire: return "largeFire";
             case MarioState.invincible: return "invincible";
+            case MarioState.dead: return "dead";
             default: return "small";
         }
     }

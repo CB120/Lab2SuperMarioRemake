@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8979856589523943765}
   - component: {fileID: 3682862451853612150}
   - component: {fileID: 4694995450793694128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KoopaTroopa
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4964538074575218931}
   - component: {fileID: 4280266610830309396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head hitbox
   m_TagString: KoopaHeadHitbox
   m_Icon: {fileID: 0}
