@@ -102,6 +102,10 @@ public class MarioStateController : MonoBehaviour
             SoundManager.PlaySound(shroomClip);
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.tag == "OffMap")
+        {
+            MarioIsDead();
+        }
     }
 
     //======================================
