@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5615826397677109310}
   - component: {fileID: 2573455140811639210}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 6517341360411200466}
   - component: {fileID: 3850631429083560752}
   - component: {fileID: 5816458806184574057}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: CoinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
