@@ -121,6 +121,11 @@ public class MarioStateController : MonoBehaviour
             FireMario();
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreController>().IncreaseCoin();
+        }
     }
 
     //======================================
