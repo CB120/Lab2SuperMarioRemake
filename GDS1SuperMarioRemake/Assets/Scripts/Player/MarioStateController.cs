@@ -173,7 +173,7 @@ public class MarioStateController : MonoBehaviour
     //======================================
     //              ENEMY COLLISIONS
     //======================================
-    private void OnEnemyCollision()
+    public void OnEnemyCollision()
     {
         if(marioState == MarioState.small)
         {
