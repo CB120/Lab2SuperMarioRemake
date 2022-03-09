@@ -167,12 +167,15 @@ public class MarioStateController : MonoBehaviour
         marioState = MarioState.invincible;
         Invoke("ExitInvincible", 5f);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<MusicController>().ChangeMusic("Star", 5f);
+        GetComponentInChildren<MarioInvincibleMode>().enabled = true;
 
     }
 
     private void ExitInvincible()
     {
         marioState = previousState;
+        GetComponentInChildren<MarioInvincibleMode>().enabled = true;
+        GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
     }
 
     //======================================
