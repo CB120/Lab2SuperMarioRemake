@@ -44,7 +44,7 @@ public class FlagController : MonoBehaviour
     }
 
     void OnMarioCollision(GameObject mario){
-        //Store Mario info
+        //Manage Mario
         string marioState = mario.GetComponent<MarioStateController>().GetStateAsString();
         Vector3 marioPosition = new Vector3(199.5f, mario.transform.position.y, 0f);
         mario.SetActive(false);
