@@ -37,6 +37,9 @@ public class MarioStateController : MonoBehaviour
     private float invulnerabilityDuration;
     private int flashCount;
 
+    [SerializeField] AudioClip shroomClip;
+    [SerializeField] AudioClip oneUpClip;
+
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
@@ -75,6 +78,7 @@ public class MarioStateController : MonoBehaviour
         {
             case "Mushroom":
                 GrowMario();
+                SoundManager.PlaySound(shroomClip);
                 Destroy(collision.gameObject);
                 break;
             case "Starman":
@@ -83,6 +87,7 @@ public class MarioStateController : MonoBehaviour
                 break;
             case "1UP":
                 //increase score
+                SoundManager.PlaySound(oneUpClip);
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
