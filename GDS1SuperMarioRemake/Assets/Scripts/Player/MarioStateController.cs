@@ -24,7 +24,7 @@ public class MarioStateController : MonoBehaviour
 
     GameObject Koopa;
 
-    //Variables that control Mario's hitbox ~ David 
+    //Variables that control Mario's hitbox ~ David
     [SerializeField] private float smallColliderX;
     [SerializeField] private float smallColliderY;
     [SerializeField] private float bigColliderX;
@@ -36,7 +36,7 @@ public class MarioStateController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        
+
 
         //Initialise initial collider sizes
         smallColliderX = MainCollider.size.x;
@@ -79,7 +79,7 @@ public class MarioStateController : MonoBehaviour
                 OnEnemyCollision();
                 break;
             case "KoopaShell":
-                
+
                 if (collision.gameObject.GetComponent<KoopaShellScript>().InitiateMovement == true)
                 {
                     OnEnemyCollision();
@@ -130,15 +130,15 @@ public class MarioStateController : MonoBehaviour
 
     private void FireMario()
     {
-       
+
         previousState = marioState;
         GetComponent<FireShootScript>().enabled = true;
         if (marioState != MarioState.invincible)
         {
             marioState = MarioState.fire;
         }
-        
-        
+
+
         transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
@@ -209,7 +209,7 @@ public class MarioStateController : MonoBehaviour
 
     private void RespawnMario()
     {
-        
+
     }
 
     private void UpdateMariosHitbox(bool setToSmall)
@@ -223,7 +223,7 @@ public class MarioStateController : MonoBehaviour
             MainCollider.size = new Vector2(bigColliderX, bigColliderY);
             MainCollider.offset = bigColliderOffset;
             TriggerCollider.offset = new Vector2(TriggerCollider.offset.x, TriggerCollider.offset.y * 2);
-            
+
         }
         else
         {
@@ -243,7 +243,7 @@ public class MarioStateController : MonoBehaviour
     public string GetStateAsString(){
         switch (marioState){
             case MarioState.large: return "large";
-            case MarioState.fire: return "fire";
+            case MarioState.fire: return "largeFire";
             case MarioState.invincible: return "invincible";
             default: return "small";
         }
