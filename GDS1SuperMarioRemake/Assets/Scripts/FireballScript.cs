@@ -12,7 +12,6 @@ public class FireballScript : MonoBehaviour
     public ScoreController Score;
 
     [SerializeField] AudioClip fireballClip;
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
