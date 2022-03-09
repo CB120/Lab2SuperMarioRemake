@@ -19,6 +19,10 @@ public class MarioStateController : MonoBehaviour
     public  MarioState marioState = MarioState.small;
     public  MarioState previousState = MarioState.small;
     Rigidbody2D rb;
+    [SerializeField] BoxCollider2D MainCollider;
+    [SerializeField] BoxCollider2D TriggerCollider;
+
+    [SerializeField] KoopaShellScript Shell;
 
     private void Start()
     {
@@ -55,6 +59,13 @@ public class MarioStateController : MonoBehaviour
                 }
                 OnEnemyCollision();
                 break;
+            case "KoopaShell":
+                Debug.Log(Shell.InitiateMovement);
+                if (Shell.InitiateMovement == true)
+                {
+                    OnEnemyCollision();
+                }
+                break;
         }
     }
 
@@ -78,6 +89,15 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.large;
             transform.GetChild(0).GetComponent<MarioAnimationController>().GrowMario();
             //Make mario large
+
+            // Please comment out the below code if you want the game to work.. this is still a work in progress ~~ Christian
+
+            MainCollider.size = new Vector2(0.8116932f, 1.549417f);
+            MainCollider.offset = new Vector2(9.536743e-07f, -0.02277434f);
+
+            TriggerCollider.size = new Vector2(0.4951229f, 0.2364993f);
+            TriggerCollider.offset = new Vector2(-0.05248165f, 0.8842032f);
+            transform.Translate(new Vector2(0, 3f));
         }
         else
         {
