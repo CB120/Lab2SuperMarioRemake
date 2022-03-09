@@ -158,13 +158,15 @@ public class MarioStateController : MonoBehaviour
     {
 
         previousState = marioState;
+        if(previousState == MarioState.small)
+        {
+            UpdateMariosHitbox(false);
+        }
         GetComponent<FireShootScript>().enabled = true;
         if (marioState != MarioState.invincible)
         {
             marioState = MarioState.fire;
         }
-
-
         transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
@@ -176,14 +178,17 @@ public class MarioStateController : MonoBehaviour
         Invoke("ExitInvincible", 5f);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<MusicController>().ChangeMusic("Star", 5f);
         GetComponentInChildren<MarioInvincibleMode>().enabled = true;
+        //GetComponent<MarioInvincibleMode>().enabled = true;
 
     }
 
     private void ExitInvincible()
     {
         marioState = previousState;
-        GetComponentInChildren<MarioInvincibleMode>().enabled = true;
+        GetComponentInChildren<MarioInvincibleMode>().enabled = false;
         GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
+        Debug.Log("Exit invincible");
+        //GetComponent<MarioInvincibleMode>().enabled = false;
     }
 
     //======================================

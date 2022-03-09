@@ -7,7 +7,7 @@ public class MarioInvincibleMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("ChangeColor", 0.5f, 0.5f);
+        InvokeRepeating("ChangeColor", 0.1f, 0.1f);
     }
 
     void ChangeColor()

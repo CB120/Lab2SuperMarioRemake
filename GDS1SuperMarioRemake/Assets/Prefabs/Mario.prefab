@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 244206053}
   - component: {fileID: 165064946100982190}
   - component: {fileID: 4689729964819052568}
+  - component: {fileID: 5997972265364269883}
   m_Layer: 6
   m_Name: MarioSprite
   m_TagString: Untagged
@@ -142,6 +143,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0660640214895848a0dc0d235cf38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5997972265364269883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557190101422911961}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62bf6d20b66d441a5856e230ea33a690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7910078361193223720
@@ -340,6 +353,8 @@ MonoBehaviour:
   bigColliderY: 0
   smallColliderOffset: {x: 0, y: 0}
   bigColliderOffset: {x: 0, y: 0}
+  bigTopTriggerOffset: {x: 0, y: 0}
+  smallTopTriggerOffset: {x: 0, y: 0}
   shroomClip: {fileID: 8300000, guid: 7bdd6c9ed768aa640b3d9aa35a794043, type: 3}
   oneUpClip: {fileID: 8300000, guid: 77972c103e1e1604eb1b69497c23022e, type: 3}
 --- !u!114 &1325083395135208020
@@ -355,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fireball: {fileID: 4340425515996239396, guid: 4a13cb2f0115e07458800b737cbed91c, type: 3}
+  spawnOffset: 0.5
 --- !u!70 &1570600393
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
