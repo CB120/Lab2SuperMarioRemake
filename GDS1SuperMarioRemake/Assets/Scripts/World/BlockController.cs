@@ -34,6 +34,9 @@ public class BlockController : MonoBehaviour
 
     public void ActivateBlock()
     {
+        // this is fucked but whatever
+        if (soundToPlay && blockType != Blocks.BREAKABLEBOX) SoundManager.PlaySound(soundToPlay);
+
         switch (blockType)
         {
             case Blocks.QUESTIONBOX:
@@ -70,7 +73,9 @@ public class BlockController : MonoBehaviour
                 break;
 
         }
-        if (soundToPlay && playSound) SoundManager.PlaySound(soundToPlay);
+
+        // this is also fucked but whatever
+        if (soundToPlay && blockType == Blocks.BREAKABLEBOX && playSound) SoundManager.PlaySound(soundToPlay);
         
     }
 
