@@ -270,7 +270,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.4}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &456508702
 MonoBehaviour:
@@ -355,6 +355,8 @@ MonoBehaviour:
   bigColliderOffset: {x: 0, y: 0}
   bigTopTriggerOffset: {x: 0, y: 0}
   smallTopTriggerOffset: {x: 0, y: 0}
+  smallBottomTriggerOffset: {x: 0, y: 0}
+  bigBottomTriggerOffset: {x: 0, y: 0}
   shroomClip: {fileID: 8300000, guid: 7bdd6c9ed768aa640b3d9aa35a794043, type: 3}
   oneUpClip: {fileID: 8300000, guid: 77972c103e1e1604eb1b69497c23022e, type: 3}
 --- !u!114 &1325083395135208020
@@ -385,7 +387,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 0.6, y: 1}
   m_Direction: 0
 --- !u!114 &1570600374
 MonoBehaviour:

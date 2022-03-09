@@ -34,6 +34,10 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] private Vector2 bigColliderOffset;
     [SerializeField] private Vector2 bigTopTriggerOffset;
     [SerializeField] private Vector2 smallTopTriggerOffset;
+    [SerializeField] private Vector2 smallBottomTriggerOffset;
+    [SerializeField] private Vector2 bigBottomTriggerOffset;
+
+
 
     //iFrame variables
     private float invulnerabilityDuration;
@@ -72,6 +76,9 @@ public class MarioStateController : MonoBehaviour
 
         smallTopTriggerOffset = TriggerColliderTop.offset;
         bigTopTriggerOffset = new Vector2(0, 1.02f);
+
+        smallBottomTriggerOffset = TriggerColliderBottom.offset;
+        bigBottomTriggerOffset = new Vector2(0, -0.96f);
     }
 
     //======================================
@@ -265,7 +272,7 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(bigColliderX, bigColliderY);
             MainCollider.offset = bigColliderOffset;
-            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 1.5f);
+            TriggerColliderBottom.offset = bigBottomTriggerOffset;
             TriggerColliderTop.offset = bigTopTriggerOffset;
 
         }
@@ -277,7 +284,7 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(smallColliderX, smallColliderY);
             MainCollider.offset = smallColliderOffset;
-            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 1.5f);
+            TriggerColliderBottom.offset = smallBottomTriggerOffset;
             TriggerColliderTop.offset = smallTopTriggerOffset;
         }
 
