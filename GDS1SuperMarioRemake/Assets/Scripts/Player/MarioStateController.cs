@@ -25,6 +25,9 @@ public class MarioStateController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    //======================================
+    //              COLLISIONS
+    //======================================
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
@@ -42,6 +45,14 @@ public class MarioStateController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
+                if(marioState == MarioState.invincible)
+                {
+                    //collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                    //collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    //collision.gameObject.GetComponent<EnemyMovement>().enabled = false;
+                    Destroy(collision.gameObject);
+                    break;
+                }
                 OnEnemyCollision();
                 break;
         }
@@ -56,9 +67,12 @@ public class MarioStateController : MonoBehaviour
         }
     }
 
+    //======================================
+    //              ABILITY STATES
+    //======================================
     private void GrowMario()
     {
-        if (marioState != MarioState.large)
+        if (marioState != MarioState.large || marioState != MarioState.fire || marioState != MarioState.invincible)
         {
             previousState = marioState;
             marioState = MarioState.large;
@@ -73,8 +87,15 @@ public class MarioStateController : MonoBehaviour
 
     private void FireMario()
     {
+       
         previousState = marioState;
-        marioState = MarioState.fire;
+        GetComponent<FireShootScript>().enabled = true;
+        if (marioState != MarioState.invincible)
+        {
+            marioState = MarioState.fire;
+        }
+        
+        
         transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
@@ -93,6 +114,9 @@ public class MarioStateController : MonoBehaviour
         marioState = previousState;
     }
 
+    //======================================
+    //              NON ABILITY STATES
+    //======================================
     private void PipeCinematic()
     {
         marioState = MarioState.inPipe;
@@ -103,17 +127,14 @@ public class MarioStateController : MonoBehaviour
         marioState = MarioState.onFlag;
     }
 
+    //======================================
+    //              ENEMY COLLISIONS
+    //======================================
     private void OnEnemyCollision()
     {
         if(marioState == MarioState.small)
         {
-            marioState = MarioState.dead;
-            GetComponent<MarioMovementController>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            
-            rb.gravityScale = 1;
-            rb.AddForce(transform.up * 200);
-            Invoke("MarioIsDead", 5f);
+            MarioIsDead();
         }
         else if (marioState == MarioState.large || marioState == MarioState.fire)
         {
@@ -125,14 +146,26 @@ public class MarioStateController : MonoBehaviour
 
     private void TakeDamage()
     {
+        GetComponent<FireShootScript>().enabled = false;
         //Do animation shit here n that to make mario small
         transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
     }
 
-    private void MarioIsDead()
+    public void MarioIsDead()
     {
+        marioState = MarioState.dead;
+        GetComponent<MarioMovementController>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        transform.GetChild(0).GetComponent<MarioAnimationController>().KillMario();
+        rb.gravityScale = 1;
+        rb.AddForce(transform.up * 600);
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        //gameController.GetComponent<GameController>().Respawn();
+        gameController.GetComponent<GameController>().PlayerIsDead();
+    }
+
+    private void RespawnMario()
+    {
+        
     }
 
 
