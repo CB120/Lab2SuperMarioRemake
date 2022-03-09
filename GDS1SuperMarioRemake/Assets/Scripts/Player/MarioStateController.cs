@@ -19,10 +19,37 @@ public class MarioStateController : MonoBehaviour
     public  MarioState marioState = MarioState.small;
     public  MarioState previousState = MarioState.small;
     Rigidbody2D rb;
+    [SerializeField] CapsuleCollider2D MainCollider;
+    [SerializeField] BoxCollider2D TriggerColliderBottom;
+    [SerializeField] BoxCollider2D TriggerColliderTop;
+
+    GameObject Koopa;
+
+    //Variables that control Mario's hitbox ~ David
+    [SerializeField] private float smallColliderX;
+    [SerializeField] private float smallColliderY;
+    [SerializeField] private float bigColliderX;
+    [SerializeField] private float bigColliderY;
+    [SerializeField] private Vector2 smallColliderOffset;
+    [SerializeField] private Vector2 bigColliderOffset;
+
+    [SerializeField] AudioClip shroomClip;
+    [SerializeField] AudioClip oneUpClip;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+
+
+        //Initialise initial collider sizes
+        smallColliderX = MainCollider.size.x;
+        smallColliderY = MainCollider.size.y;
+        smallColliderOffset = MainCollider.offset;
+        //Determine the size of big/fire Mario's colliders based on small collider
+        bigColliderX = smallColliderX;
+        bigColliderY = smallColliderY * 2.0f;
+        bigColliderOffset = smallColliderOffset;
     }
 
     //======================================
@@ -34,6 +61,7 @@ public class MarioStateController : MonoBehaviour
         {
             case "Mushroom":
                 GrowMario();
+                SoundManager.PlaySound(shroomClip);
                 Destroy(collision.gameObject);
                 break;
             case "Starman":
@@ -42,6 +70,7 @@ public class MarioStateController : MonoBehaviour
                 break;
             case "1UP":
                 //increase score
+                SoundManager.PlaySound(oneUpClip);
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
@@ -55,6 +84,13 @@ public class MarioStateController : MonoBehaviour
                 }
                 OnEnemyCollision();
                 break;
+            case "KoopaShell":
+
+                if (collision.gameObject.GetComponent<KoopaShellScript>().InitiateMovement == true)
+                {
+                    OnEnemyCollision();
+                }
+                break;
         }
     }
 
@@ -63,6 +99,7 @@ public class MarioStateController : MonoBehaviour
         if(collision.gameObject.tag == "Flower")
         {
             FireMario();
+            SoundManager.PlaySound(shroomClip);
             Destroy(collision.gameObject);
         }
     }
@@ -78,6 +115,19 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.large;
             transform.GetChild(0).GetComponent<MarioAnimationController>().GrowMario();
             //Make mario large
+
+            // Please comment out the below code if you want the game to work.. this is still a work in progress ~~ Christian
+
+            //MainCollider.size = new Vector2(0.8116932f, 1.549417f);
+            //MainCollider.offset = new Vector2(9.536743e-07f, -0.02277434f);
+
+            //TriggerColliderBottom.size = new Vector2(0.4951229f, 0.2364993f);
+            //TriggerColliderBottom.offset = new Vector2(-0.05248165f, 0.8842032f);
+            //transform.Translate(new Vector2(0, 3f));
+
+            /*Created a method that handles growing and shrinking - not sure why but Mario
+             won't take input once this is done*/
+            UpdateMariosHitbox(false);
         }
         else
         {
@@ -87,15 +137,15 @@ public class MarioStateController : MonoBehaviour
 
     private void FireMario()
     {
-       
+
         previousState = marioState;
         GetComponent<FireShootScript>().enabled = true;
         if (marioState != MarioState.invincible)
         {
             marioState = MarioState.fire;
         }
-        
-        
+
+
         transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
@@ -105,7 +155,7 @@ public class MarioStateController : MonoBehaviour
         previousState = marioState;
         marioState = MarioState.invincible;
         Invoke("ExitInvincible", 5f);
-
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<MusicController>().ChangeMusic("Star", 5f);
 
     }
 
@@ -130,7 +180,7 @@ public class MarioStateController : MonoBehaviour
     //======================================
     //              ENEMY COLLISIONS
     //======================================
-    private void OnEnemyCollision()
+    public void OnEnemyCollision()
     {
         if(marioState == MarioState.small)
         {
@@ -149,6 +199,7 @@ public class MarioStateController : MonoBehaviour
         GetComponent<FireShootScript>().enabled = false;
         //Do animation shit here n that to make mario small
         transform.GetChild(0).GetComponent<MarioAnimationController>().ShrinkMario();
+        UpdateMariosHitbox(true);
     }
 
     public void MarioIsDead()
@@ -161,19 +212,48 @@ public class MarioStateController : MonoBehaviour
         rb.AddForce(transform.up * 600);
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().PlayerIsDead();
+        gameController.GetComponent<MusicController>().ChangeMusic("Death", 0);
     }
 
     private void RespawnMario()
     {
-        
+
     }
 
+    private void UpdateMariosHitbox(bool setToSmall)
+    {
+        if (!setToSmall)
+        {
+            if (GetComponent<GroundedTest>().IsGrounded())
+            {
+                transform.Translate(new Vector2(0, 1), Space.Self);
+            }
+            MainCollider.size = new Vector2(bigColliderX, bigColliderY);
+            MainCollider.offset = bigColliderOffset;
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 2);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y * 2);
+
+        }
+        else
+        {
+            if (GetComponent<GroundedTest>().IsGrounded())
+            {
+                transform.Translate(new Vector2(0, 1), Space.Self);
+            }
+            MainCollider.size = new Vector2(smallColliderX, smallColliderY);
+            MainCollider.offset = smallColliderOffset;
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 2);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y / 2);
+        }
+
+        GetComponent<GroundedTest>().UpdateHitboxSize(setToSmall);
+    }
 
     //Added by Ethan bc he was too tired to work out how to reference an enum across classes
     public string GetStateAsString(){
         switch (marioState){
             case MarioState.large: return "large";
-            case MarioState.fire: return "fire";
+            case MarioState.fire: return "largeFire";
             case MarioState.invincible: return "invincible";
             default: return "small";
         }

@@ -27,41 +27,50 @@ public class KoopaShellScript : MonoBehaviour
 
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(4.5f);
         Destroy(this.gameObject);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (InitiateMovement == false)
         {
             if (collision.gameObject.tag == "Player")
             {
+                //Determine direction of shell before moving it
+                if (transform.position.x - collision.gameObject.transform.position.x > 0)
+                {
+                    Debug.Log("Move Right");
+                    wallCollision = false;
+                }
+                else
+                {
+                    Debug.Log("Move Left");
+                    wallCollision = true;
+                }
                 InitiateMovement = true;
                 Debug.Log("Shellz");
                 StartCoroutine(SelfDestruct());
             }
         }
-
-            if (InitiateMovement == true)
+        else if (InitiateMovement == true)
+        {
+            if (collision.gameObject.tag == "Pipe")
             {
-                if (collision.gameObject.tag == "Pipe")
-                {
-                    wallCollision ^= true;
-                }
-                if (collision.gameObject.tag == "Enemy")
-                {
-                    Destroy(collision.gameObject);
-                    Debug.Log("Hit with a shell");
-                }
+                wallCollision ^= true;
+            }
+            if (collision.gameObject.tag == "Enemy")
+            {
+                Destroy(collision.gameObject);
+                Debug.Log("Hit with a shell");
+            }
 
-                if (collision.gameObject == Mario)
-                {
-                    // Kill mario 
-                }
+            if (collision.gameObject.tag == "Player")
+            {
+                Debug.Log("Touched shell");
             }
         }
     }
+}
 
 

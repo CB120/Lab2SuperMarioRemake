@@ -11,14 +11,16 @@ public class FireballScript : MonoBehaviour
     private Animator animator;
     public ScoreController Score;
 
+    [SerializeField] AudioClip fireballClip;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
         rb.velocity = new Vector2(HorizontalVelocity, rb.velocity.y);
-        animator = GetComponent<Animator>();
         Score = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreController>();
     }
 

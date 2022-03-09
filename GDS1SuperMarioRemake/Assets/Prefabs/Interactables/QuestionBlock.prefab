@@ -157,6 +157,7 @@ MonoBehaviour:
   destroyItemTime: 0.2
   loopCount: 5
   blockType: 0
+  soundToPlay: {fileID: 8300000, guid: 1d0c7096585793642865ca907e1bfd25, type: 3}
 --- !u!50 &1721969835
 Rigidbody2D:
   serializedVersion: 4

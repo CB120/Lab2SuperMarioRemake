@@ -101,6 +101,8 @@ MonoBehaviour:
   player: {fileID: 0}
   FollowPlayer: 1
   CameraYAxis: 0
+  Goomba: {fileID: 3010262089059544068, guid: ff19dcad971b06e44af445cef4d254f0, type: 3}
+  Koopa: {fileID: 5497135536500221332, guid: aac8b6734381d2041a15000e972aee4b, type: 3}
 --- !u!61 &2582866976670766113
 BoxCollider2D:
   m_ObjectHideFlags: 0

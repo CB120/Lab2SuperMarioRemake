@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5500392560796042436}
   - component: {fileID: 8425725307046743194}
   - component: {fileID: 1116323375389609832}
+  - component: {fileID: 8893306687980312411}
   m_Layer: 0
   m_Name: KoopaShell
   m_TagString: KoopaShell
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1195564f596269448981c49b5587d1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShellSpeed: 6
+  ShellSpeed: 9
   InitiateMovement: 0
   Mario: {fileID: 7910078361193223720, guid: ec233450ff0deec45b98477cba68489b, type: 3}
 --- !u!50 &8425725307046743194
@@ -133,10 +134,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.06750858}
+  m_Offset: {x: 0, y: -0.06107664}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,5 +148,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.075943, y: 0.8883498}
+  m_Size: {x: 1.075943, y: 0.63117933}
+  m_EdgeRadius: 0
+--- !u!61 &8893306687980312411
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144834070339573709}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0019779205, y: 0.3778429}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0751724, y: 0.2522273}
   m_EdgeRadius: 0
