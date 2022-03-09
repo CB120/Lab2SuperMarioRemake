@@ -27,6 +27,8 @@ public class MarioAttackScript : MonoBehaviour
             {
                 GameObject goomba = collision.gameObject.transform.parent.gameObject;
                 goomba.GetComponent<BoxCollider2D>().size = new Vector2(goomba.GetComponent<BoxCollider2D>().size.x, goomba.GetComponent<BoxCollider2D>().size.y / 2);
+                goomba.GetComponent<Rigidbody2D>().simulated = false;
+                goomba.GetComponent<EnemyMovement>().enabled = false;
                 goomba.transform.Translate(new Vector2(0, -0.3f), Space.Self);
                 goomba.GetComponent<Animator>().SetBool("IsDead", true);
             }
