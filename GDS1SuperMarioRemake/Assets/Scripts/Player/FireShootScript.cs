@@ -6,6 +6,7 @@ public class FireShootScript : MonoBehaviour
 {
     public GameObject Fireball;
     private bool isRight = true;
+    [SerializeField] private float spawnOffset = 0.5f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -17,12 +18,12 @@ public class FireShootScript : MonoBehaviour
             if (isRight == true)
             {
                 Fireball.GetComponent<FireballScript>().HorizontalVelocity = 15;
-                Instantiate(Fireball, new Vector2(transform.position.x + 0.7f, transform.position.y), Quaternion.identity);
+                Instantiate(Fireball, new Vector2(transform.position.x + 0.7f + spawnOffset, transform.position.y), Quaternion.identity);
             }
             else
             {
                 Fireball.GetComponent<FireballScript>().HorizontalVelocity = -15;
-                Instantiate(Fireball, new Vector2(transform.position.x - 0.8f, transform.position.y), Quaternion.Euler(0f, 180f, 0f));
+                Instantiate(Fireball, new Vector2(transform.position.x - 0.8f - spawnOffset, transform.position.y), Quaternion.Euler(0f, 180f, 0f));
             }
         }
     }

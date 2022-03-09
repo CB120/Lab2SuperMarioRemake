@@ -34,12 +34,12 @@ public class MarioAnimationController : MonoBehaviour
         if(groundedTest.IsGrounded() && rb.velocity.y <= 0.1)
         {
             //Flip Mario if the player is moving him left
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 spriteRenderer.flipX = true;
             }
             //Reset Mario's orientation if the player is moving him right
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 spriteRenderer.flipX = false;
             }
@@ -53,7 +53,7 @@ public class MarioAnimationController : MonoBehaviour
         animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxis("Horizontal")));
 
         //Update the throwing parameter based on if the player is throwing
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("Run"))
         {
             animator.SetBool("isThrowing", true);
         }
@@ -81,11 +81,11 @@ public class MarioAnimationController : MonoBehaviour
     void SetAnimationSpeed()
     {
         //Speed up Mario's animation if he is sprinting
-        if (Input.GetKey(KeyCode.LeftShift) && animator.GetFloat("Velocity") > 0.1f)
+        if (Input.GetButton("Run") && animator.GetFloat("Velocity") > 0.1f)
         {
             animator.speed = 1.5f;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetButtonUp("Run"))
         {
             animator.speed = 1.0f;
         }

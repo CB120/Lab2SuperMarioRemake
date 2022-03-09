@@ -32,6 +32,8 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] private float bigColliderY;
     [SerializeField] private Vector2 smallColliderOffset;
     [SerializeField] private Vector2 bigColliderOffset;
+    [SerializeField] private Vector2 bigTopTriggerOffset;
+    [SerializeField] private Vector2 smallTopTriggerOffset;
 
     //iFrame variables
     private float invulnerabilityDuration;
@@ -67,6 +69,9 @@ public class MarioStateController : MonoBehaviour
         bigColliderX = smallColliderX;
         bigColliderY = smallColliderY * 2.0f;
         bigColliderOffset = smallColliderOffset;
+
+        smallTopTriggerOffset = TriggerColliderTop.offset;
+        bigTopTriggerOffset = new Vector2(0, 1.02f);
     }
 
     //======================================
@@ -78,7 +83,6 @@ public class MarioStateController : MonoBehaviour
         {
             case "Mushroom":
                 GrowMario();
-                SoundManager.PlaySound(shroomClip);
                 Destroy(collision.gameObject);
                 break;
             case "Starman":
@@ -87,7 +91,6 @@ public class MarioStateController : MonoBehaviour
                 break;
             case "1UP":
                 //increase score
-                SoundManager.PlaySound(oneUpClip);
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
@@ -155,13 +158,15 @@ public class MarioStateController : MonoBehaviour
     {
 
         previousState = marioState;
+        if(previousState == MarioState.small)
+        {
+            UpdateMariosHitbox(false);
+        }
         GetComponent<FireShootScript>().enabled = true;
         if (marioState != MarioState.invincible)
         {
             marioState = MarioState.fire;
         }
-
-
         transform.GetChild(0).GetComponent<MarioAnimationController>().FireMario();
         //enable fire mario
     }
@@ -172,12 +177,18 @@ public class MarioStateController : MonoBehaviour
         marioState = MarioState.invincible;
         Invoke("ExitInvincible", 5f);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<MusicController>().ChangeMusic("Star", 5f);
+        GetComponentInChildren<MarioInvincibleMode>().enabled = true;
+        //GetComponent<MarioInvincibleMode>().enabled = true;
 
     }
 
     private void ExitInvincible()
     {
         marioState = previousState;
+        GetComponentInChildren<MarioInvincibleMode>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
+        Debug.Log("Exit invincible");
+        //GetComponent<MarioInvincibleMode>().enabled = false;
     }
 
     //======================================
@@ -250,7 +261,7 @@ public class MarioStateController : MonoBehaviour
             MainCollider.size = new Vector2(bigColliderX, bigColliderY);
             MainCollider.offset = bigColliderOffset;
             TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 1.5f);
-            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y * 1.5f);
+            TriggerColliderTop.offset = bigTopTriggerOffset;
 
         }
         else
@@ -262,7 +273,7 @@ public class MarioStateController : MonoBehaviour
             MainCollider.size = new Vector2(smallColliderX, smallColliderY);
             MainCollider.offset = smallColliderOffset;
             TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 1.5f);
-            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y / 1/5f);
+            TriggerColliderTop.offset = smallTopTriggerOffset;
         }
 
         GetComponent<GroundedTest>().UpdateHitboxSize(setToSmall);
