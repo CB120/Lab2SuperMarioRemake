@@ -20,6 +20,7 @@ public class BlockController : MonoBehaviour
     public Blocks blockType;
 
     [SerializeField] AudioClip soundToPlay;
+    bool playSound;
 
     private void Start()
     {
@@ -33,7 +34,6 @@ public class BlockController : MonoBehaviour
 
     public void ActivateBlock()
     {
-        if (soundToPlay) SoundManager.PlaySound(soundToPlay);
         switch (blockType)
         {
             case Blocks.QUESTIONBOX:
@@ -46,8 +46,11 @@ public class BlockController : MonoBehaviour
             case Blocks.BREAKABLEBOX:
                 if(GameObject.FindGameObjectWithTag("Player").GetComponent<MarioStateController>().GetStateAsString() != "small")
                 {
+                    playSound = true;
                     Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
                     Destroy(gameObject);
+                } else {
+                    playSound = false;
                 }
                 break;
             case Blocks.COINBRICK:
@@ -67,6 +70,7 @@ public class BlockController : MonoBehaviour
                 break;
 
         }
+        if (soundToPlay && playSound) SoundManager.PlaySound(soundToPlay);
         
     }
 
