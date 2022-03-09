@@ -136,10 +136,13 @@ public class MarioMovementController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (groundedTest.IsHittingCeiling()) {
-            velocity.y = 0;
+            HitCeiling();
         }
-
        
+    }
+
+    public void HitCeiling() {
+        velocity.y = 0;
     }
 
   

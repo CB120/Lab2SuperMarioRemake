@@ -113,6 +113,7 @@ public class BlockController : MonoBehaviour
             {
                 ActivateBlock();
             }
+            collision.gameObject.GetComponent<MarioMovementController>().HitCeiling();
         }
     }
 
