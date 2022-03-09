@@ -56,7 +56,7 @@ public class MarioStateController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        invulnerabilityDuration = 5.0f;
 
 
         //Initialise initial collider sizes
@@ -230,7 +230,8 @@ public class MarioStateController : MonoBehaviour
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().PlayerIsDead();
         gameController.GetComponent<MusicController>().ChangeMusic("Death", 0);
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
+        Physics2D.IgnoreLayerCollision(6, 0, true);
     }
 
     private void RespawnMario()
