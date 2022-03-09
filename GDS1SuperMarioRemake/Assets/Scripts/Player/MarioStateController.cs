@@ -33,6 +33,9 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] private Vector2 smallColliderOffset;
     [SerializeField] private Vector2 bigColliderOffset;
 
+    [SerializeField] AudioClip shroomClip;
+    [SerializeField] AudioClip oneUpClip;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,6 +61,7 @@ public class MarioStateController : MonoBehaviour
         {
             case "Mushroom":
                 GrowMario();
+                SoundManager.PlaySound(shroomClip);
                 Destroy(collision.gameObject);
                 break;
             case "Starman":
@@ -66,6 +70,7 @@ public class MarioStateController : MonoBehaviour
                 break;
             case "1UP":
                 //increase score
+                SoundManager.PlaySound(oneUpClip);
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
@@ -94,6 +99,7 @@ public class MarioStateController : MonoBehaviour
         if(collision.gameObject.tag == "Flower")
         {
             FireMario();
+            SoundManager.PlaySound(shroomClip);
             Destroy(collision.gameObject);
         }
     }

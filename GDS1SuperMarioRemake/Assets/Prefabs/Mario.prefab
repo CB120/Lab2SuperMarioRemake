@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5925441429425672690}
   - component: {fileID: 3792907480725419440}
   - component: {fileID: 244206053}
+  - component: {fileID: 165064946100982190}
   m_Layer: 6
   m_Name: MarioSprite
   m_TagString: Untagged
@@ -107,6 +108,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &244206053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557190101422911961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0660640214895848a0dc0d235cf38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &165064946100982190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,6 +268,8 @@ MonoBehaviour:
   jumpHoldGravityStrength: 11.25
   airControl: 0.5
   maxAirControl: 4
+  smallJumpClip: {fileID: 8300000, guid: e89c42c756b592446abc0bfafefec445, type: 3}
+  bigJumpClip: {fileID: 8300000, guid: 60dd6a218b852044ab9f6b43a22c5369, type: 3}
 --- !u!114 &456508703
 MonoBehaviour:
   m_ObjectHideFlags: 0

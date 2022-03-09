@@ -19,6 +19,8 @@ public class BlockController : MonoBehaviour
     };
     public Blocks blockType;
 
+    [SerializeField] AudioClip soundToPlay;
+
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
@@ -31,12 +33,15 @@ public class BlockController : MonoBehaviour
 
     public void ActivateBlock()
     {
+        if (soundToPlay) SoundManager.PlaySound(soundToPlay);
         switch (blockType)
         {
             case Blocks.QUESTIONBOX:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
                 Invoke("SpawnItem", spawnItemTime);
                 blockType = Blocks.EMPTY;
+                // Make sure coin sound only plays once.
+                soundToPlay = null;
                 break;
             case Blocks.BREAKABLEBOX:
                 if(GameObject.FindGameObjectWithTag("Player").GetComponent<MarioStateController>().GetStateAsString() != "small")
@@ -51,6 +56,8 @@ public class BlockController : MonoBehaviour
                 scoreController.IncreaseCoin();
                 SpawnAndDeleteItem();
                 blockType = Blocks.EMPTY;
+                // Make sure coin sound only plays once.
+                soundToPlay = null;
                 break;
             case Blocks.LOOPCOINBRICK:
                 LoopBrick();
@@ -81,6 +88,8 @@ public class BlockController : MonoBehaviour
             GetComponentInChildren<Animator>().ResetTrigger("isLooping");
             GetComponentInChildren<Animator>().SetTrigger("isOpen");
             blockType = Blocks.EMPTY;
+            // Stop playing the coin sound on hit
+            soundToPlay = null;
         }
     }
 

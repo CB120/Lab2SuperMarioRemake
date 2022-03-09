@@ -37,7 +37,8 @@ public class MarioMovementController : MonoBehaviour
     bool jumpedSinceJumpDown = false;
     bool jumpNextFrame = false; // this should probs be an ienumerator but i couldn't get it working right :P
 
-    
+    [SerializeField] AudioClip smallJumpClip;
+    [SerializeField] AudioClip bigJumpClip;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -54,6 +55,8 @@ public class MarioMovementController : MonoBehaviour
             if (IsGrounded()) {
                 QueueJump();
                 airControlInfluence = 0;
+                // If small play the small clip, in any other case mario must be big, so play the big clip.
+                SoundManager.PlaySound(GetComponent<MarioStateController>().marioState == MarioStateController.MarioState.small ? smallJumpClip : bigJumpClip);
             }
         }
         

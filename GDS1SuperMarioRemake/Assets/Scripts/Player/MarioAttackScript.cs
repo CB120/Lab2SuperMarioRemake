@@ -12,7 +12,7 @@ public class MarioAttackScript : MonoBehaviour
     // Reference to UI 
     public ScoreController Score;
 
-    
+    [SerializeField] AudioClip hitEnemySound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,6 +34,8 @@ public class MarioAttackScript : MonoBehaviour
             }
             Debug.Log("Hit");
             Score.IncreaseScore(100);
+            
+            SoundManager.PlaySound(hitEnemySound);
         }
 
         if (collision.gameObject.tag == "KoopaHeadHitbox")
@@ -45,8 +47,8 @@ public class MarioAttackScript : MonoBehaviour
             Debug.Log("Hit");
             Destroy(collision.transform.parent.gameObject);
         
+            SoundManager.PlaySound(hitEnemySound);
         }
-
         Debug.Log(collision.gameObject.tag);
     }
 }
