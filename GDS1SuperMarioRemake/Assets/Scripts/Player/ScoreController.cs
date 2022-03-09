@@ -24,7 +24,7 @@ public class ScoreController : MonoBehaviour
 
     public void IncreaseCoin()
     {
-        coinScore++;
+        coinScore += 1;
         coinText.text = "x" + coinScore.ToString("00");
     }
 }

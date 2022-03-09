@@ -32,6 +32,7 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] private float bigColliderY;
     [SerializeField] private Vector2 smallColliderOffset;
     [SerializeField] private Vector2 bigColliderOffset;
+    private ScoreController scoreController;
 
     //iFrame variables
     private float invulnerabilityDuration;
@@ -54,7 +55,7 @@ public class MarioStateController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         invulnerabilityDuration = 5.0f;
-
+        scoreController = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreController>();
 
         //Initialise initial collider sizes
         smallColliderX = MainCollider.size.x;
@@ -112,6 +113,13 @@ public class MarioStateController : MonoBehaviour
         {
             FireMario();
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            scoreController.IncreaseCoin();
+
+            print("a");
         }
     }
 
