@@ -39,8 +39,11 @@ public class BlockController : MonoBehaviour
                 blockType = Blocks.EMPTY;
                 break;
             case Blocks.BREAKABLEBOX:
-                Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                if(GameObject.FindGameObjectWithTag("Player").GetComponent<MarioStateController>().GetStateAsString() != "small")
+                {
+                    Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                }
                 break;
             case Blocks.COINBRICK:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
@@ -96,7 +99,11 @@ public class BlockController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            ActivateBlock();
+            Debug.Log(collision.gameObject.transform.position.y - gameObject.transform.position.y);
+            if (collision.gameObject.transform.position.y - gameObject.transform.position.y < 0)
+            {
+                ActivateBlock();
+            }
         }
     }
 
