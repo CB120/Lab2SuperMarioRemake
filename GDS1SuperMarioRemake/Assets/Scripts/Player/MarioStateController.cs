@@ -20,7 +20,8 @@ public class MarioStateController : MonoBehaviour
     public  MarioState previousState = MarioState.small;
     Rigidbody2D rb;
     [SerializeField] BoxCollider2D MainCollider;
-    [SerializeField] BoxCollider2D TriggerCollider;
+    [SerializeField] BoxCollider2D TriggerColliderBottom;
+    [SerializeField] BoxCollider2D TriggerColliderTop;
 
     GameObject Koopa;
 
@@ -108,15 +109,6 @@ public class MarioStateController : MonoBehaviour
             marioState = MarioState.large;
             transform.GetChild(0).GetComponent<MarioAnimationController>().GrowMario();
             //Make mario large
-
-            // Please comment out the below code if you want the game to work.. this is still a work in progress ~~ Christian
-
-            //MainCollider.size = new Vector2(0.8116932f, 1.549417f);
-            //MainCollider.offset = new Vector2(9.536743e-07f, -0.02277434f);
-
-            //TriggerCollider.size = new Vector2(0.4951229f, 0.2364993f);
-            //TriggerCollider.offset = new Vector2(-0.05248165f, 0.8842032f);
-            //transform.Translate(new Vector2(0, 3f));
 
             /*Created a method that handles growing and shrinking - not sure why but Mario
              won't take input once this is done*/
@@ -222,7 +214,8 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(bigColliderX, bigColliderY);
             MainCollider.offset = bigColliderOffset;
-            TriggerCollider.offset = new Vector2(TriggerCollider.offset.x, TriggerCollider.offset.y * 2);
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y * 2);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y * 2);
             
         }
         else
@@ -233,7 +226,8 @@ public class MarioStateController : MonoBehaviour
             }
             MainCollider.size = new Vector2(smallColliderX, smallColliderY);
             MainCollider.offset = smallColliderOffset;
-            TriggerCollider.offset = new Vector2(TriggerCollider.offset.x, TriggerCollider.offset.y / 2);
+            TriggerColliderBottom.offset = new Vector2(TriggerColliderBottom.offset.x, TriggerColliderBottom.offset.y / 2);
+            TriggerColliderTop.offset = new Vector2(TriggerColliderTop.offset.x, TriggerColliderTop.offset.y / 2);
         }
 
         GetComponent<GroundedTest>().UpdateHitboxSize(setToSmall);

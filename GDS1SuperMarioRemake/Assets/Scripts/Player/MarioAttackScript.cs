@@ -21,12 +21,13 @@ public class MarioAttackScript : MonoBehaviour
         {
             //Destroy(collision.transform.parent.gameObject);
             /*The goomba will now instead play the death animation then destroy itself from the animator*/
-            Debug.Log(collision.gameObject.transform.parent.GetComponent<Animator>());
+            //Debug.Log(collision.gameObject.transform.parent.GetComponent<Animator>());
             //GetComponentInParent<Rigidbody2D>().AddForce(collision.transform.up * 10000);
             if (collision.gameObject.transform.parent.GetComponent<Animator>().isActiveAndEnabled)
             {
                 GameObject goomba = collision.gameObject.transform.parent.gameObject;
-                goomba.GetComponent<BoxCollider2D>().enabled = false;
+                goomba.GetComponent<BoxCollider2D>().size = new Vector2(goomba.GetComponent<BoxCollider2D>().size.x, goomba.GetComponent<BoxCollider2D>().size.y / 2);
+                goomba.transform.Translate(new Vector2(0, -0.3f), Space.Self);
                 goomba.GetComponent<Animator>().SetBool("IsDead", true);
             }
             Debug.Log("Hit");

@@ -330,8 +330,14 @@ MonoBehaviour:
   marioState: 0
   previousState: 0
   MainCollider: {fileID: 456508699}
-  TriggerCollider: {fileID: 3915037289409754579}
-  Shell: {fileID: 0}
+  TriggerColliderBottom: {fileID: 3915037289409754579}
+  TriggerColliderTop: {fileID: 1036568373}
+  smallColliderX: 0
+  smallColliderY: 0
+  bigColliderX: 0
+  bigColliderY: 0
+  smallColliderOffset: {x: 0, y: 0}
+  bigColliderOffset: {x: 0, y: 0}
 --- !u!114 &1325083395135208020
 MonoBehaviour:
   m_ObjectHideFlags: 0

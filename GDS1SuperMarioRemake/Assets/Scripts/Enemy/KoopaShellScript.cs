@@ -37,6 +37,17 @@ public class KoopaShellScript : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
+                //Determine direction of shell before moving it
+                if (transform.position.x - collision.gameObject.transform.position.x > 0)
+                {
+                    Debug.Log("Move Right");
+                    wallCollision = false;
+                }
+                else
+                {
+                    Debug.Log("Move Left");
+                    wallCollision = true;
+                }
                 InitiateMovement = true;
                 Debug.Log("Shellz");
                 StartCoroutine(SelfDestruct());
