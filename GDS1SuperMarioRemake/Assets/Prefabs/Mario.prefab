@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3792907480725419440}
   - component: {fileID: 244206053}
   - component: {fileID: 165064946100982190}
+  - component: {fileID: 4689729964819052568}
   m_Layer: 6
   m_Name: MarioSprite
   m_TagString: Untagged
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &165064946100982190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557190101422911961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0660640214895848a0dc0d235cf38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4689729964819052568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,4 +385,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
   Score: {fileID: 0}
-  hitEnemySound: {fileID: 8300000, guid: f16f8fa7d6b51f84795da7980d334897, type: 3}
+  hitClip: {fileID: 8300000, guid: f16f8fa7d6b51f84795da7980d334897, type: 3}

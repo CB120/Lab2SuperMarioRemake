@@ -37,6 +37,9 @@ public class MarioStateController : MonoBehaviour
     private float invulnerabilityDuration;
     private int flashCount;
 
+    [SerializeField] AudioClip shroomClip;
+    [SerializeField] AudioClip oneUpClip;
+
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 7, true);
@@ -53,7 +56,7 @@ public class MarioStateController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        invulnerabilityDuration = 5.0f;
 
 
         //Initialise initial collider sizes
@@ -75,6 +78,7 @@ public class MarioStateController : MonoBehaviour
         {
             case "Mushroom":
                 GrowMario();
+                SoundManager.PlaySound(shroomClip);
                 Destroy(collision.gameObject);
                 break;
             case "Starman":
@@ -83,6 +87,7 @@ public class MarioStateController : MonoBehaviour
                 break;
             case "1UP":
                 //increase score
+                SoundManager.PlaySound(oneUpClip);
                 Destroy(collision.gameObject);
                 break;
             case "Enemy":
@@ -225,7 +230,8 @@ public class MarioStateController : MonoBehaviour
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().PlayerIsDead();
         gameController.GetComponent<MusicController>().ChangeMusic("Death", 0);
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
+        Physics2D.IgnoreLayerCollision(6, 0, true);
     }
 
     private void RespawnMario()

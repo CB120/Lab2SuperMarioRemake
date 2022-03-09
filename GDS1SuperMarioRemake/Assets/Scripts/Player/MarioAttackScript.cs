@@ -12,6 +12,8 @@ public class MarioAttackScript : MonoBehaviour
     // Reference to UI 
     public ScoreController Score;
 
+    [SerializeField] AudioClip hitClip;
+
     
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +34,8 @@ public class MarioAttackScript : MonoBehaviour
                     goomba.GetComponent<EnemyMovement>().enabled = false;
                     goomba.transform.Translate(new Vector2(0, -0.3f), Space.Self);
                     goomba.GetComponent<Animator>().SetBool("IsDead", true);
-                    //GetComponent<MarioMovementController>().QueueJump();
+                    SoundManager.PlaySound(hitClip);
+                    GetComponent<MarioMovementController>().QueueJump();
                 }
                 Debug.Log("Hit");
                 Score.IncreaseScore(100);
@@ -46,7 +49,8 @@ public class MarioAttackScript : MonoBehaviour
                 Instantiate(KoopaShell, new Vector3(KoopaTransform.position.x, 2.39f, KoopaTransform.position.z), Quaternion.identity);
                 Debug.Log("Hit");
                 Destroy(collision.transform.parent.gameObject);
-                //GetComponent<MarioMovementController>().QueueJump();
+                SoundManager.PlaySound(hitClip);
+                GetComponent<MarioMovementController>().QueueJump();
             }
         }
         Debug.Log(collision.gameObject.tag);
