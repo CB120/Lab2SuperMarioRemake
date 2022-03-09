@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2664683102874219521}
   - component: {fileID: 8979856589523943765}
   - component: {fileID: 3682862451853612150}
+  - component: {fileID: 4694995450793694128}
   m_Layer: 0
   m_Name: KoopaTroopa
   m_TagString: Enemy
@@ -170,6 +171,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4694995450793694128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497135536500221332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f411420ef386a4991b981a4dd529bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}
 --- !u!1 &6509712467490176520
 GameObject:
   m_ObjectHideFlags: 0
