@@ -9627,7 +9627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: marioState
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2758649687648224515, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score
@@ -9703,6 +9703,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202236924025657579, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325083395135208020, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3292614216916486840, guid: ec233450ff0deec45b98477cba68489b, type: 3}
