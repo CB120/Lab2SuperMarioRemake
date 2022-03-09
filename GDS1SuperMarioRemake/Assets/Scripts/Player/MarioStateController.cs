@@ -149,7 +149,7 @@ public class MarioStateController : MonoBehaviour
         previousState = marioState;
         marioState = MarioState.invincible;
         Invoke("ExitInvincible", 5f);
-
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<MusicController>().ChangeMusic("Star", 5f);
 
     }
 
@@ -206,6 +206,7 @@ public class MarioStateController : MonoBehaviour
         rb.AddForce(transform.up * 600);
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().PlayerIsDead();
+        gameController.GetComponent<MusicController>().ChangeMusic("Death", 0);
     }
 
     private void RespawnMario()
