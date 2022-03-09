@@ -6,7 +6,7 @@ using UnityEngine;
 public class GroundedTest : MonoBehaviour
 {
     // Attached collider
-    Collider2D col;
+    [SerializeField] Collider2D col;
 
     // Size of the box to test in.
     [SerializeField] Vector2 size;
@@ -22,7 +22,8 @@ public class GroundedTest : MonoBehaviour
     Vector2 bigMarioSize;
 
     private void Awake() {
-        col = GetComponent<Collider2D>();
+        // col = GetComponent<Collider2D>(); 
+        // had to serialize cause three colliders on the one object lol
         //Added by David ~ initialise variables that adjust Mario's hitbox
         smallMarioDistance = distance;
         bigMarioDistance = distance * 2;

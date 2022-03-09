@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8429783647991870695}
   - component: {fileID: 4477509368705434865}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head hitbox
   m_TagString: Head Hitbox
   m_Icon: {fileID: 0}
@@ -72,7 +72,8 @@ GameObject:
   - component: {fileID: 3010262089059544067}
   - component: {fileID: 3010262089059544064}
   - component: {fileID: 405638019148617723}
-  m_Layer: 0
+  - component: {fileID: 6911556173101787965}
+  m_Layer: 8
   m_Name: Goomba
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -201,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3010262089059544068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0614e9f3d18b8444d8d2362276976ef9, type: 3}
   m_Name: 
@@ -228,3 +229,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6911556173101787965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010262089059544068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f411420ef386a4991b981a4dd529bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8425725307046743194}
   - component: {fileID: 1116323375389609832}
   - component: {fileID: 8893306687980312411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KoopaShell
   m_TagString: KoopaShell
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1195564f596269448981c49b5587d1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShellSpeed: 6
+  ShellSpeed: 9
   InitiateMovement: 0
   Mario: {fileID: 7910078361193223720, guid: ec233450ff0deec45b98477cba68489b, type: 3}
 --- !u!50 &8425725307046743194

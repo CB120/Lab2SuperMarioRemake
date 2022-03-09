@@ -19,6 +19,9 @@ public class BlockController : MonoBehaviour
     };
     public Blocks blockType;
 
+    [SerializeField] AudioClip soundToPlay;
+    bool playSound = true;
+
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController");
@@ -31,16 +34,27 @@ public class BlockController : MonoBehaviour
 
     public void ActivateBlock()
     {
+        // this is fucked but whatever
+        if (soundToPlay && blockType != Blocks.BREAKABLEBOX) SoundManager.PlaySound(soundToPlay);
+
         switch (blockType)
         {
             case Blocks.QUESTIONBOX:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
                 Invoke("SpawnItem", spawnItemTime);
                 blockType = Blocks.EMPTY;
+                // Make sure coin sound only plays once.
+                soundToPlay = null;
                 break;
             case Blocks.BREAKABLEBOX:
-                Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                if(GameObject.FindGameObjectWithTag("Player").GetComponent<MarioStateController>().GetStateAsString() != "small")
+                {
+                    playSound = true;
+                    Instantiate(pickup, gameObject.transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                } else {
+                    playSound = false;
+                }
                 break;
             case Blocks.COINBRICK:
                 GetComponentInChildren<Animator>().SetTrigger("isOpen");
@@ -48,6 +62,8 @@ public class BlockController : MonoBehaviour
                 scoreController.IncreaseCoin();
                 SpawnAndDeleteItem();
                 blockType = Blocks.EMPTY;
+                // Make sure coin sound only plays once.
+                soundToPlay = null;
                 break;
             case Blocks.LOOPCOINBRICK:
                 LoopBrick();
@@ -57,6 +73,9 @@ public class BlockController : MonoBehaviour
                 break;
 
         }
+
+        // this is also fucked but whatever
+        if (soundToPlay && blockType == Blocks.BREAKABLEBOX && playSound) SoundManager.PlaySound(soundToPlay);
         
     }
 
@@ -78,6 +97,8 @@ public class BlockController : MonoBehaviour
             GetComponentInChildren<Animator>().ResetTrigger("isLooping");
             GetComponentInChildren<Animator>().SetTrigger("isOpen");
             blockType = Blocks.EMPTY;
+            // Stop playing the coin sound on hit
+            soundToPlay = null;
         }
     }
 
@@ -96,7 +117,12 @@ public class BlockController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            ActivateBlock();
+            Debug.Log(collision.gameObject.transform.position.y - gameObject.transform.position.y);
+            if (collision.gameObject.transform.position.y - gameObject.transform.position.y < 0)
+            {
+                ActivateBlock();
+            }
+            collision.gameObject.GetComponent<MarioMovementController>().HitCeiling();
         }
     }
 

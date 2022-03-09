@@ -35,8 +35,10 @@ public class MarioMovementController : MonoBehaviour
     [SerializeField] float maxAirControl;
 
     bool jumpedSinceJumpDown = false;
+    bool jumpNextFrame = false; // this should probs be an ienumerator but i couldn't get it working right :P
 
-    
+    [SerializeField] AudioClip smallJumpClip;
+    [SerializeField] AudioClip bigJumpClip;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -49,9 +51,13 @@ public class MarioMovementController : MonoBehaviour
     }
 
     private void Update() {
-        // Prevent bunny-hopping
-        if (Input.GetButtonUp("Jump")) {
-            jumpedSinceJumpDown = false;
+        if (Input.GetButtonDown("Jump")) {
+            if (IsGrounded()) {
+                QueueJump();
+                airControlInfluence = 0;
+                // If small play the small clip, in any other case mario must be big, so play the big clip.
+                SoundManager.PlaySound(GetComponent<MarioStateController>().marioState == MarioStateController.MarioState.small ? smallJumpClip : bigJumpClip);
+            }
         }
         
     }
@@ -68,15 +74,10 @@ public class MarioMovementController : MonoBehaviour
         //Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
 
         // Jumping/Falling
+
         if (grounded) {
             velocity.x = 0; // Velocity should be directly based on input when grounded.
             velocity.y = -groundStickingVelocity;
-            if (Input.GetButton("Jump") && !jumpedSinceJumpDown) {
-                Jump();
-                jumpedSinceJumpDown = true;
-                jumpMomentum = speed * input.x;
-                airControlInfluence = 0;
-            }
         } else {
             // Apply acceleration due to gravity
             float g = gravityStrength;
@@ -86,6 +87,14 @@ public class MarioMovementController : MonoBehaviour
             }
 
             velocity.y = Mathf.Clamp(velocity.y - g * Time.fixedDeltaTime, -terminalVelocity, terminalVelocity);
+        }
+
+        // Actual jumping is handled OUTSIDE OF GROUNDED CHECK
+        // All jump calls should perform a grounded check first.
+        if (jumpNextFrame) {
+            Jump();
+            jumpMomentum = speed * input.x;
+            jumpNextFrame = false;
         }
 
         // Horizontal movement
@@ -105,6 +114,17 @@ public class MarioMovementController : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    public void QueueJump() {
+        // StartCoroutine(JumpNextPhysicsFrame());
+        jumpNextFrame = true;
+    }
+
+
+    // IEnumerator JumpNextPhysicsFrame() {
+    //     yield return new WaitForFixedUpdate();
+    //     Jump();
+    // }
+
     private void Jump () {
         // Not super authentic, while running does increase your jump height, it's not just going off the run button being held down, but this approximates it well enough.  
         velocity.y = jumpImpulse;
@@ -114,12 +134,19 @@ public class MarioMovementController : MonoBehaviour
         return groundedTest.IsGrounded();
     }
 
+    public void OnDead () {
+        rb.velocity = Vector2.zero;
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if (groundedTest.IsHittingCeiling()) {
-            velocity.y = 0;
+            HitCeiling();
         }
-
        
+    }
+
+    public void HitCeiling() {
+        velocity.y = 0;
     }
 
   
