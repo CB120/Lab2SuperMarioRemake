@@ -30,6 +30,9 @@ public class MarioMovementController : MonoBehaviour
     [SerializeField] float jumpHoldGravityStrength; 
     
     [SerializeField] float airControl;
+    float jumpMomentum;
+    float airControlInfluence;
+    [SerializeField] float maxAirControl;
 
     bool jumpedSinceJumpDown = false;
 
@@ -59,6 +62,9 @@ public class MarioMovementController : MonoBehaviour
         
         bool grounded = IsGrounded();
 
+        // Set the speed based on if run is held
+        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
+
         //Debug.Log((grounded ? "Grounded" : "Not grounded") + ", " + (groundedTest.IsHittingCeiling() ? "Ceilinged" : "Not ceilinged"));
 
         // Jumping/Falling
@@ -68,6 +74,8 @@ public class MarioMovementController : MonoBehaviour
             if (Input.GetButton("Jump") && !jumpedSinceJumpDown) {
                 Jump();
                 jumpedSinceJumpDown = true;
+                jumpMomentum = speed * input.x;
+                airControlInfluence = 0;
             }
         } else {
             // Apply acceleration due to gravity
@@ -82,11 +90,14 @@ public class MarioMovementController : MonoBehaviour
 
         // Horizontal movement
 
-        // Set the speed based on if run is held
-        float speed = (Input.GetButton("Run") ? maxRunSpeed : maxWalkSpeed);
-        if (!grounded) speed = airControl;
-        // Apply X velocity. Note addition to allow air acceleration/deceleration. velocity.x is reset to zero when grounded above
-        velocity.x += speed * input.x;
+        if (!grounded) {
+            speed = airControl;
+            airControlInfluence = Mathf.Clamp(airControlInfluence + speed * input.x, -maxAirControl, maxAirControl);
+            velocity.x = jumpMomentum + airControlInfluence;
+        } else {
+            // Apply X velocity. Note addition to allow air acceleration/deceleration. velocity.x is reset to zero when grounded above
+            velocity.x += speed * input.x;
+        }
         
 
         

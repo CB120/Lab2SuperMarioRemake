@@ -9624,11 +9624,23 @@ PrefabInstance:
       objectReference: {fileID: 5500392560796042436, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
     - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: airControl
-      value: 0.1171875
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: jumpImpulse
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: maxAirControl
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: jumpImpulseRunning
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 456508702, guid: ec233450ff0deec45b98477cba68489b, type: 3}
+      propertyPath: jumpHoldGravityStrength
+      value: 11.25
       objectReference: {fileID: 0}
     - target: {fileID: 456508703, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: size.y
