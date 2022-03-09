@@ -19181,6 +19181,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350074490}
     m_Modifications:
+    - target: {fileID: 2019360202943287660, guid: 8cd6b4726f7cfd342ae2b6237f557e61, type: 3}
+      propertyPath: m_Size.y
+      value: 29.19209
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019360202943287660, guid: 8cd6b4726f7cfd342ae2b6237f557e61, type: 3}
+      propertyPath: m_Offset.y
+      value: 6.103945
+      objectReference: {fileID: 0}
     - target: {fileID: 2019360202943287662, guid: 8cd6b4726f7cfd342ae2b6237f557e61, type: 3}
       propertyPath: m_Name
       value: End Flag
