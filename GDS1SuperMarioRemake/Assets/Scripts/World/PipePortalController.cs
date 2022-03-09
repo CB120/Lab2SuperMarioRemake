@@ -26,11 +26,19 @@ public class PipePortalController : MonoBehaviour
 
     GameObject marioReference;
     GameObject dummyMarioReference;
+    GameObject mainCameraReference;
+    GameObject undergroundCameraReference;
 
 
     //Engine-called
+    void Awake(){
+        undergroundCameraReference = GameObject.FindGameObjectWithTag("UndergroundCamera");
+    }
+
     void Start(){
+        undergroundCameraReference.SetActive(false);
         marioReference = GameObject.FindGameObjectWithTag("Player");
+        mainCameraReference = GameObject.FindWithTag("MainCamera");
         isOverground = transform.position.x > 0;
     }
 
@@ -91,7 +99,6 @@ public class PipePortalController : MonoBehaviour
 
         //Invoked
     void StopAnimation(){
-        Debug.Log("StopAnimation() Invoked");
         dummyAnimating = false;
 
         if (isOverground){
@@ -104,8 +111,19 @@ public class PipePortalController : MonoBehaviour
             }
         }
 
+        ToggleCamera();
         Destroy(dummyMarioReference);
         marioReference.SetActive(true);
+    }
+
+    void ToggleCamera(){
+        if (!isOverground){
+            mainCameraReference.SetActive(true);
+            undergroundCameraReference.SetActive(false);
+        } else {
+            undergroundCameraReference.SetActive(true);
+            mainCameraReference.SetActive(false);
+        }
     }
 
 
