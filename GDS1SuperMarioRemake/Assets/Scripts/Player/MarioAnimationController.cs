@@ -25,7 +25,7 @@ public class MarioAnimationController : MonoBehaviour
         SetAnimatorOrientation();
         SetAnimatorParams();
         SetAnimationSpeed();
-        Debug.Log("Grounded: " + groundedTest.IsGrounded());
+        //Debug.Log("Grounded: " + groundedTest.IsGrounded());
     }
 
     void SetAnimatorOrientation()

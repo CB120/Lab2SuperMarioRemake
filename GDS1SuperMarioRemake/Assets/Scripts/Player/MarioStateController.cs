@@ -22,7 +22,7 @@ public class MarioStateController : MonoBehaviour
     [SerializeField] BoxCollider2D MainCollider;
     [SerializeField] BoxCollider2D TriggerCollider;
 
-    [SerializeField] KoopaShellScript Shell;
+    GameObject Koopa;
 
     //Variables that control Mario's hitbox ~ David 
     [SerializeField] private float smallColliderX;
@@ -35,6 +35,8 @@ public class MarioStateController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        
 
         //Initialise initial collider sizes
         smallColliderX = MainCollider.size.x;
@@ -77,8 +79,8 @@ public class MarioStateController : MonoBehaviour
                 OnEnemyCollision();
                 break;
             case "KoopaShell":
-                Debug.Log(Shell.InitiateMovement);
-                if (Shell.InitiateMovement == true)
+                
+                if (collision.gameObject.GetComponent<KoopaShellScript>().InitiateMovement == true)
                 {
                     OnEnemyCollision();
                 }

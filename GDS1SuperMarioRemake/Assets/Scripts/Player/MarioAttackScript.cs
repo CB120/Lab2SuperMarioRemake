@@ -22,6 +22,7 @@ public class MarioAttackScript : MonoBehaviour
             //Destroy(collision.transform.parent.gameObject);
             /*The goomba will now instead play the death animation then destroy itself from the animator*/
             Debug.Log(collision.gameObject.transform.parent.GetComponent<Animator>());
+            //GetComponentInParent<Rigidbody2D>().AddForce(collision.transform.up * 10000);
             if (collision.gameObject.transform.parent.GetComponent<Animator>().isActiveAndEnabled)
             {
                 GameObject goomba = collision.gameObject.transform.parent.gameObject;
@@ -34,11 +35,13 @@ public class MarioAttackScript : MonoBehaviour
 
         if (collision.gameObject.tag == "KoopaHeadHitbox")
         {
+            //GetComponentInParent<Rigidbody2D>().AddForce(collision.transform.up * 10000);
             Transform KoopaTransform = collision.gameObject.GetComponent<Transform>();
             Score.IncreaseScore(100);
             Instantiate(KoopaShell, new Vector3(KoopaTransform.position.x, 2.39f, KoopaTransform.position.z), Quaternion.identity);
             Debug.Log("Hit");
             Destroy(collision.transform.parent.gameObject);
+        
         }
 
         Debug.Log(collision.gameObject.tag);
