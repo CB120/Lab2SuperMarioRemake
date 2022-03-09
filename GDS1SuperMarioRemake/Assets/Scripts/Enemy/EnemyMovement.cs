@@ -22,10 +22,12 @@ public class EnemyMovement : MonoBehaviour
         if (wallCollision == false)
         {
             transform.Translate(Vector2.left * enemySpeed * Time.deltaTime);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (wallCollision == true)
         {
             transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
 
     }
