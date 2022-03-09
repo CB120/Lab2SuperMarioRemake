@@ -35,6 +35,7 @@ public class MarioMovementController : MonoBehaviour
     [SerializeField] float maxAirControl;
 
     bool jumpedSinceJumpDown = false;
+    bool jumpNextFrame = false; // this should probs be an ienumerator but i couldn't get it working right :P
 
     
 
@@ -49,9 +50,11 @@ public class MarioMovementController : MonoBehaviour
     }
 
     private void Update() {
-        // Prevent bunny-hopping
-        if (Input.GetButtonUp("Jump")) {
-            jumpedSinceJumpDown = false;
+        if (Input.GetButtonDown("Jump")) {
+            if (IsGrounded()) {
+                QueueJump();
+                airControlInfluence = 0;
+            }
         }
         
     }
@@ -71,11 +74,10 @@ public class MarioMovementController : MonoBehaviour
         if (grounded) {
             velocity.x = 0; // Velocity should be directly based on input when grounded.
             velocity.y = -groundStickingVelocity;
-            if (Input.GetButton("Jump") && !jumpedSinceJumpDown) {
+            if (jumpNextFrame) {
                 Jump();
-                jumpedSinceJumpDown = true;
                 jumpMomentum = speed * input.x;
-                airControlInfluence = 0;
+                jumpNextFrame = false;
             }
         } else {
             // Apply acceleration due to gravity
@@ -105,6 +107,17 @@ public class MarioMovementController : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    public void QueueJump() {
+        // StartCoroutine(JumpNextPhysicsFrame());
+        jumpNextFrame = true;
+    }
+
+
+    // IEnumerator JumpNextPhysicsFrame() {
+    //     yield return new WaitForFixedUpdate();
+    //     Jump();
+    // }
+
     private void Jump () {
         // Not super authentic, while running does increase your jump height, it's not just going off the run button being held down, but this approximates it well enough.  
         velocity.y = jumpImpulse;
@@ -112,6 +125,10 @@ public class MarioMovementController : MonoBehaviour
 
     private bool IsGrounded () {
         return groundedTest.IsGrounded();
+    }
+
+    public void OnDead () {
+        rb.velocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

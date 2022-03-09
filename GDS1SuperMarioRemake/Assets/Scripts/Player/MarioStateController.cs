@@ -19,7 +19,7 @@ public class MarioStateController : MonoBehaviour
     public  MarioState marioState = MarioState.small;
     public  MarioState previousState = MarioState.small;
     Rigidbody2D rb;
-    [SerializeField] BoxCollider2D MainCollider;
+    [SerializeField] CapsuleCollider2D MainCollider;
     [SerializeField] BoxCollider2D TriggerColliderBottom;
     [SerializeField] BoxCollider2D TriggerColliderTop;
 
