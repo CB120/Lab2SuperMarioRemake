@@ -9744,22 +9744,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273799482}
     m_Modifications:
-    - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
-      propertyPath: oneUpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 77972c103e1e1604eb1b69497c23022e, type: 3}
-    - target: {fileID: -8398416353074084406, guid: ec233450ff0deec45b98477cba68489b, type: 3}
-      propertyPath: shroomClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7bdd6c9ed768aa640b3d9aa35a794043, type: 3}
     - target: {fileID: 1570600374, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: Score
       value: 
       objectReference: {fileID: 2115240826}
-    - target: {fileID: 1570600374, guid: ec233450ff0deec45b98477cba68489b, type: 3}
-      propertyPath: hitClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f16f8fa7d6b51f84795da7980d334897, type: 3}
     - target: {fileID: 3292614216916486840, guid: ec233450ff0deec45b98477cba68489b, type: 3}
       propertyPath: m_RootOrder
       value: 1
