@@ -20,7 +20,7 @@ public class BlockController : MonoBehaviour
     public Blocks blockType;
 
     [SerializeField] AudioClip soundToPlay;
-    bool playSound;
+    bool playSound = true;
 
     private void Start()
     {
