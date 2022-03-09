@@ -197,7 +197,7 @@ public class MarioStateController : MonoBehaviour
     private void ExitInvincible()
     {
         marioState = previousState;
-        GetComponentInChildren<MarioInvincibleMode>().enabled = false;
+        Destroy(GetComponentInChildren<MarioInvincibleMode>());
         GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
         Debug.Log("Exit invincible");
         //GetComponent<MarioInvincibleMode>().enabled = false;
