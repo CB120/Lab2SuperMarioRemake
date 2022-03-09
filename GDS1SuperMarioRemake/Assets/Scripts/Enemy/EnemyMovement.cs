@@ -8,11 +8,11 @@ public class EnemyMovement : MonoBehaviour
     public float enemySpeed;
     private bool wallCollision = false;
     public GameObject Mario;
-    private SpriteRenderer sp;
+    private MarioStateController marioStateController;
 
     private void Start()
     {
-        sp = GetComponent<SpriteRenderer>();
+        marioStateController = Mario.GetComponent<MarioStateController>();
     }
 
     void Update()
@@ -20,14 +20,14 @@ public class EnemyMovement : MonoBehaviour
         //Vector3 screenPoint = cam.WorldToScreenPoint(Mario.transform.position);
         
         if (wallCollision == false)
-                {
-                    transform.Translate(Vector2.left * enemySpeed * Time.deltaTime);
-                    
-                }
-                else if (wallCollision == true)
-                {
-                    transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
-                sp.flipX = true;
+        {
+            transform.Translate(Vector2.left * enemySpeed * Time.deltaTime);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (wallCollision == true)
+        {
+            transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
 
     }
@@ -41,13 +41,15 @@ public class EnemyMovement : MonoBehaviour
 
         if (collision.gameObject == Mario) // && Star != active)
         {
-            // If mario is small, put death code
-            // If mario is big, downgrade him to small
-            // If mario has the flower. downgrade him to big
+            if(marioStateController.marioState == MarioStateController.MarioState.invincible)
+            {
+
+            }
 
         }
     }
 
+   
    
 
 

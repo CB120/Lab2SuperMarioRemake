@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5292269433347541022}
   - component: {fileID: 5925441429425672690}
   - component: {fileID: 3792907480725419440}
-  - component: {fileID: 8402457152695107565}
-  - component: {fileID: 3720550450938800661}
   m_Layer: 6
   m_Name: MarioSprite
   m_TagString: Untagged
@@ -107,46 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &8402457152695107565
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557190101422911961}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0036657602, y: -0.437869}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1}
-    newSize: {x: 3, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7280053, y: 0.124261975}
-  m_EdgeRadius: 0
---- !u!114 &3720550450938800661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557190101422911961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b46523912bbbc44b0535c1f835e0ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
-  Score: {fileID: 0}
 --- !u!1 &7910078361193223720
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,8 +117,11 @@ GameObject:
   - component: {fileID: 456508700}
   - component: {fileID: 456508699}
   - component: {fileID: 1036568373}
+  - component: {fileID: 3915037289409754579}
   - component: {fileID: 456508702}
   - component: {fileID: 456508703}
+  - component: {fileID: 4447907550775002921}
+  - component: {fileID: -2758649687648224515}
   - component: {fileID: -8398416353074084406}
   - component: {fileID: 1325083395135208020}
   m_Layer: 6
@@ -214,13 +175,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910078361193223720}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005949378, y: 0.06681085}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -231,7 +192,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.76009583, y: 0.8663783}
+  m_Size: {x: 0.75, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &1036568373
 BoxCollider2D:
@@ -259,6 +220,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30760074, y: 0.09623647}
   m_EdgeRadius: 0
+--- !u!61 &3915037289409754579
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910078361193223720}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.025281072, y: -0.4865334}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5932313, y: 0.08414078}
+  m_EdgeRadius: 0
 --- !u!114 &456508702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +267,7 @@ MonoBehaviour:
   jumpImpulseRunning: 5
   jumpHoldGravityStrength: 2.85
   airControl: 0.234375
+  maxAirControl: 0
 --- !u!114 &456508703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +285,36 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 129
+--- !u!114 &4447907550775002921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910078361193223720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe88c10c579154faeb06c5965fb67920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  coinText: {fileID: 0}
+  score: 0
+  coinScore: 0
+--- !u!114 &-2758649687648224515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910078361193223720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b46523912bbbc44b0535c1f835e0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KoopaShell: {fileID: 8144834070339573709, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
+  Score: {fileID: 0}
 --- !u!114 &-8398416353074084406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,9 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b570ab491a9bb4a39875bfe1f95e9d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marioState: 4
+  marioState: 0
   previousState: 0
-  Shell: {fileID: 5500392560796042436, guid: 2e891ec46d1754d4092e0ee0286d6490, type: 3}
+  MainCollider: {fileID: 456508699}
+  TriggerCollider: {fileID: 3915037289409754579}
+  Shell: {fileID: 0}
 --- !u!114 &1325083395135208020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,10 +339,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910078361193223720}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4a40e18c9dd4542954a5491cd5ed67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Fireball: {fileID: 4340425515996239396, guid: 4a13cb2f0115e07458800b737cbed91c, type: 3}
-  stateController: {fileID: -8398416353074084406}

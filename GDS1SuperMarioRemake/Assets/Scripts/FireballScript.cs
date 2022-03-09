@@ -14,11 +14,11 @@ public class FireballScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
         rb.velocity = new Vector2(HorizontalVelocity, rb.velocity.y);
-        animator = GetComponent<Animator>();
         Score = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreController>();
     }
 
@@ -35,7 +35,7 @@ public class FireballScript : MonoBehaviour
             OnContact();
             Destroy(collision.gameObject);
             Debug.Log("Hit");
-            Score.score += 100;
+            Score.IncreaseScore(100);
         }
         else if (rb != null) rb.velocity = new Vector2(rb.velocity.x, 7f);
     }
